@@ -1,0 +1,227 @@
+C51 COMPILER V9.53.0.0   LAB1_3                                                            11/07/2023 15:08:29 PAGE 1   
+
+
+C51 COMPILER V9.53.0.0, COMPILATION OF MODULE LAB1_3
+OBJECT MODULE PLACED IN lab1_3.OBJ
+COMPILER INVOKED BY: E:\Keil\C51\BIN\C51.EXE lab1_3.c LARGE OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND CODE LISTINCLUDE
+                    - SYMBOLS TABS(2)
+
+line level    source
+
+   1          #include <reg51.h>
+   1      =1  /*--------------------------------------------------------------------------
+   2      =1  REG51.H
+   3      =1  
+   4      =1  Header file for generic 80C51 and 80C31 microcontroller.
+   5      =1  Copyright (c) 1988-2002 Keil Elektronik GmbH and Keil Software, Inc.
+   6      =1  All rights reserved.
+   7      =1  --------------------------------------------------------------------------*/
+   8      =1  
+   9      =1  #ifndef __REG51_H__
+  10      =1  #define __REG51_H__
+  11      =1  
+  12      =1  /*  BYTE Register  */
+  13      =1  sfr P0   = 0x80;
+  14      =1  sfr P1   = 0x90;
+  15      =1  sfr P2   = 0xA0;
+  16      =1  sfr P3   = 0xB0;
+  17      =1  sfr PSW  = 0xD0;
+  18      =1  sfr ACC  = 0xE0;
+  19      =1  sfr B    = 0xF0;
+  20      =1  sfr SP   = 0x81;
+  21      =1  sfr DPL  = 0x82;
+  22      =1  sfr DPH  = 0x83;
+  23      =1  sfr PCON = 0x87;
+  24      =1  sfr TCON = 0x88;
+  25      =1  sfr TMOD = 0x89;
+  26      =1  sfr TL0  = 0x8A;
+  27      =1  sfr TL1  = 0x8B;
+  28      =1  sfr TH0  = 0x8C;
+  29      =1  sfr TH1  = 0x8D;
+  30      =1  sfr IE   = 0xA8;
+  31      =1  sfr IP   = 0xB8;
+  32      =1  sfr SCON = 0x98;
+  33      =1  sfr SBUF = 0x99;
+  34      =1  
+  35      =1  
+  36      =1  /*  BIT Register  */
+  37      =1  /*  PSW   */
+  38      =1  sbit CY   = 0xD7;
+  39      =1  sbit AC   = 0xD6;
+  40      =1  sbit F0   = 0xD5;
+  41      =1  sbit RS1  = 0xD4;
+  42      =1  sbit RS0  = 0xD3;
+  43      =1  sbit OV   = 0xD2;
+  44      =1  sbit P    = 0xD0;
+  45      =1  
+  46      =1  /*  TCON  */
+  47      =1  sbit TF1  = 0x8F;
+  48      =1  sbit TR1  = 0x8E;
+  49      =1  sbit TF0  = 0x8D;
+  50      =1  sbit TR0  = 0x8C;
+  51      =1  sbit IE1  = 0x8B;
+  52      =1  sbit IT1  = 0x8A;
+  53      =1  sbit IE0  = 0x89;
+C51 COMPILER V9.53.0.0   LAB1_3                                                            11/07/2023 15:08:29 PAGE 2   
+
+  54      =1  sbit IT0  = 0x88;
+  55      =1  
+  56      =1  /*  IE   */
+  57      =1  sbit EA   = 0xAF;
+  58      =1  sbit ES   = 0xAC;
+  59      =1  sbit ET1  = 0xAB;
+  60      =1  sbit EX1  = 0xAA;
+  61      =1  sbit ET0  = 0xA9;
+  62      =1  sbit EX0  = 0xA8;
+  63      =1  
+  64      =1  /*  IP   */ 
+  65      =1  sbit PS   = 0xBC;
+  66      =1  sbit PT1  = 0xBB;
+  67      =1  sbit PX1  = 0xBA;
+  68      =1  sbit PT0  = 0xB9;
+  69      =1  sbit PX0  = 0xB8;
+  70      =1  
+  71      =1  /*  P3  */
+  72      =1  sbit RD   = 0xB7;
+  73      =1  sbit WR   = 0xB6;
+  74      =1  sbit T1   = 0xB5;
+  75      =1  sbit T0   = 0xB4;
+  76      =1  sbit INT1 = 0xB3;
+  77      =1  sbit INT0 = 0xB2;
+  78      =1  sbit TXD  = 0xB1;
+  79      =1  sbit RXD  = 0xB0;
+  80      =1  
+  81      =1  /*  SCON  */
+  82      =1  sbit SM0  = 0x9F;
+  83      =1  sbit SM1  = 0x9E;
+  84      =1  sbit SM2  = 0x9D;
+  85      =1  sbit REN  = 0x9C;
+  86      =1  sbit TB8  = 0x9B;
+  87      =1  sbit RB8  = 0x9A;
+  88      =1  sbit TI   = 0x99;
+  89      =1  sbit RI   = 0x98;
+  90      =1  
+  91      =1  #endif
+   2          
+   3          void delay(int count) {
+   4   1          int i;
+   5   1          for (i = 0; i < count; i++) {
+   6   2              __asm nop
+   7   2          }
+   8   1      }
+   9          
+  10          void main() {
+  11   1          P1 = P1 & 0xFD; // Clear bit 1 of port 1
+  12   1      
+  13   1          while (1) {
+  14   2              delay(86);
+  15   2              P1 = P1 | 0x02; // Set bit 1 of port 1
+  16   2              delay(2);
+  17   2              P1 = P1 & 0xFD; // Clear bit 1 of port 1
+  18   2          }
+  19   1      }
+*** ERROR C272 IN LINE 6 OF lab1_3.c: '__asm' requires src-control to be active
+C51 COMPILER V9.53.0.0   LAB1_3                                                            11/07/2023 15:08:29 PAGE 3   
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+             ; FUNCTION _delay (BEGIN)
+                                           ; SOURCE LINE # 3
+0000 900000      R     MOV     DPTR,#count
+0003 EE                MOV     A,R6
+0004 F0                MOVX    @DPTR,A
+0005 A3                INC     DPTR
+0006 EF                MOV     A,R7
+0007 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 5
+0008 E4                CLR     A
+0009 A3                INC     DPTR
+000A F0                MOVX    @DPTR,A
+000B A3                INC     DPTR
+000C F0                MOVX    @DPTR,A
+000D         ?C0001:
+000D 900000      R     MOV     DPTR,#count
+0010 E0                MOVX    A,@DPTR
+0011 FE                MOV     R6,A
+0012 A3                INC     DPTR
+0013 E0                MOVX    A,@DPTR
+0014 FF                MOV     R7,A
+0015 C3                CLR     C
+0016 900000      R     MOV     DPTR,#i+01H
+0019 E0                MOVX    A,@DPTR
+001A 9F                SUBB    A,R7
+001B EE                MOV     A,R6
+001C 6480              XRL     A,#080H
+001E F8                MOV     R0,A
+001F 900000      R     MOV     DPTR,#i
+0022 E0                MOVX    A,@DPTR
+0023 6480              XRL     A,#080H
+0025 98                SUBB    A,R0
+0026 5010              JNC     ?C0004
+                                           ; SOURCE LINE # 7
+0028 900000      R     MOV     DPTR,#i+01H
+002B E0                MOVX    A,@DPTR
+002C 04                INC     A
+002D F0                MOVX    @DPTR,A
+002E 70DD              JNZ     ?C0001
+0030 900000      R     MOV     DPTR,#i
+0033 E0                MOVX    A,@DPTR
+0034 04                INC     A
+0035 F0                MOVX    @DPTR,A
+0036         ?C0008:
+0036 80D5              SJMP    ?C0001
+                                           ; SOURCE LINE # 8
+0038         ?C0004:
+0038 22                RET     
+             ; FUNCTION _delay (END)
+
+             ; FUNCTION main (BEGIN)
+                                           ; SOURCE LINE # 10
+                                           ; SOURCE LINE # 11
+0000 5390FD            ANL     P1,#0FDH
+0003         ?C0005:
+                                           ; SOURCE LINE # 13
+                                           ; SOURCE LINE # 14
+0003 7F56              MOV     R7,#056H
+0005 7E00              MOV     R6,#00H
+C51 COMPILER V9.53.0.0   LAB1_3                                                            11/07/2023 15:08:29 PAGE 4   
+
+0007 120000      R     LCALL   _delay
+                                           ; SOURCE LINE # 15
+000A 439002            ORL     P1,#02H
+                                           ; SOURCE LINE # 16
+000D 7F02              MOV     R7,#02H
+000F 7E00              MOV     R6,#00H
+0011 120000      R     LCALL   _delay
+                                           ; SOURCE LINE # 17
+0014 5390FD            ANL     P1,#0FDH
+                                           ; SOURCE LINE # 18
+0017 80EA              SJMP    ?C0005
+             ; FUNCTION main (END)
+
+C51 COMPILER V9.53.0.0   LAB1_3                                                            11/07/2023 15:08:29 PAGE 5   
+
+NAME                                    CLASS   MSPACE  TYPE    OFFSET  SIZE
+====                                    =====   ======  ====    ======  ====
+
+
+P1 . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0090H  1
+_delay . . . . . . . . . . . . . . . .  PUBLIC   CODE   PROC     0000H  -----
+  count. . . . . . . . . . . . . . . .  AUTO     XDATA  INT      0000H  2
+  i. . . . . . . . . . . . . . . . . .  AUTO     XDATA  INT      0002H  2
+main . . . . . . . . . . . . . . . . .  PUBLIC   CODE   PROC     0000H  -----
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     82    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----       4
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  1 ERROR(S)
