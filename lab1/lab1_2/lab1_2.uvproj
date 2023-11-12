@@ -153,7 +153,7 @@
             <CpuDllArguments></CpuDllArguments>
             <PeripheralDll></PeripheralDll>
             <PeripheralDllArguments></PeripheralDllArguments>
-            <InitializationFile>lab1_2_2.ini</InitializationFile>
+            <InitializationFile>lab1_2.ini</InitializationFile>
           </SimDlls>
           <TargetDlls>
             <CpuDll></CpuDll>
@@ -361,6 +361,18 @@
       <Groups>
         <Group>
           <GroupName>Source Group 1</GroupName>
+          <Files>
+            <File>
+              <FileName>lab1_2_2.ini</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\lab1_2_2.ini</FilePath>
+            </File>
+            <File>
+              <FileName>lab1_2.ini</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\lab1_2.ini</FilePath>
+            </File>
+          </Files>
         </Group>
       </Groups>
     </Target>

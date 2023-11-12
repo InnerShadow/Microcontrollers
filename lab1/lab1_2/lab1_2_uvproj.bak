@@ -153,7 +153,7 @@
             <CpuDllArguments></CpuDllArguments>
             <PeripheralDll></PeripheralDll>
             <PeripheralDllArguments></PeripheralDllArguments>
-            <InitializationFile>lab1_2.ini</InitializationFile>
+            <InitializationFile>lab1_2_2.ini</InitializationFile>
           </SimDlls>
           <TargetDlls>
             <CpuDll></CpuDll>
@@ -175,7 +175,7 @@
           </Flash1>
           <bUseTDR>0</bUseTDR>
           <Flash2></Flash2>
-          <Flash3></Flash3>
+          <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -229,7 +229,7 @@
               <RCB>
                 <Type>0</Type>
                 <StartAddress>0x0</StartAddress>
-                <Size>0x10000</Size>
+                <Size>0xffff</Size>
               </RCB>
               <RXB>
                 <Type>0</Type>
