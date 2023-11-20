@@ -1,0 +1,83 @@
+C51 COMPILER V9.53.0.0   LAB2_1                                                            11/20/2023 19:35:24 PAGE 1   
+
+
+C51 COMPILER V9.53.0.0, COMPILATION OF MODULE LAB2_1
+OBJECT MODULE PLACED IN lab2_1.OBJ
+COMPILER INVOKED BY: E:\Keil\C51\BIN\C51.EXE lab2_1.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND CODE LISTINCLUDE SYMBO
+                    -LS TABS(2)
+
+line level    source
+
+   1          void main() {
+   2   1          idata var_idata = 1;
+   3   1      
+   4   1          xdata var_xdata = 2;
+   5   1      
+   6   1          pdata var_pdata = 3;
+   7   1      
+   8   1          int var_code = 4;
+   9   1      
+  10   1          while (1) {
+  11   2              // Main loop
+  12   2          }
+  13   1      }
+C51 COMPILER V9.53.0.0   LAB2_1                                                            11/20/2023 19:35:24 PAGE 2   
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+             ; FUNCTION main (BEGIN)
+                                           ; SOURCE LINE # 1
+                                           ; SOURCE LINE # 2
+0000 7800        R     MOV     R0,#LOW var_idata
+0002 7600              MOV     @R0,#00H
+0004 08                INC     R0
+0005 7601              MOV     @R0,#01H
+                                           ; SOURCE LINE # 4
+0007 900000      R     MOV     DPTR,#var_xdata
+000A E4                CLR     A
+000B F0                MOVX    @DPTR,A
+000C A3                INC     DPTR
+000D 7402              MOV     A,#02H
+000F F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 6
+0010 7800        R     MOV     R0,#LOW var_pdata
+0012 E4                CLR     A
+0013 F2                MOVX    @R0,A
+0014 08                INC     R0
+0015 7403              MOV     A,#03H
+0017 F2                MOVX    @R0,A
+                                           ; SOURCE LINE # 8
+0018 750000      R     MOV     var_code,#00H
+001B 750004      R     MOV     var_code+01H,#04H
+001E         ?C0001:
+                                           ; SOURCE LINE # 10
+                                           ; SOURCE LINE # 12
+001E 80FE              SJMP    ?C0001
+             ; FUNCTION main (END)
+
+C51 COMPILER V9.53.0.0   LAB2_1                                                            11/20/2023 19:35:24 PAGE 3   
+
+NAME                                    CLASS   MSPACE  TYPE    OFFSET  SIZE
+====                                    =====   ======  ====    ======  ====
+
+
+main . . . . . . . . . . . . . . . . .  PUBLIC   CODE   PROC     0000H  -----
+  var_idata. . . . . . . . . . . . . .  AUTO     IDATA  INT      0000H  2
+  var_xdata. . . . . . . . . . . . . .  AUTO     XDATA  INT      0000H  2
+  var_pdata. . . . . . . . . . . . . .  AUTO     PDATA  INT      0000H  2
+  var_code . . . . . . . . . . . . . .  AUTO     DATA   INT      0000H  2
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     32    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----       2
+   PDATA SIZE       =   ----       2
+   DATA SIZE        =   ----       2
+   IDATA SIZE       =   ----       2
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

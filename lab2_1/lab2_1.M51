@@ -1,0 +1,86 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        11/20/2023  19:14:12  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+E:\KEIL\C51\BIN\BL51.EXE lab2_1.obj TO lab2_1
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  lab2_1.obj (LAB2_1)
+  E:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  lab2_1 (LAB2_1)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0002H     UNIT         _DATA_GROUP_
+            IDATA   000AH     0002H     UNIT         _IDATA_GROUP_
+            IDATA   000CH     0001H     UNIT         ?STACK
+
+            * * * * * * *  X D A T A   M E M O R Y  * * * * * * *
+            XDATA   0000H     0002H     INPAGE       _PDATA_GROUP_
+            XDATA   0002H     0002H     UNIT         _XDATA_GROUP_
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     0020H     UNIT         ?PR?MAIN?LAB2_1
+            CODE    0820H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   lab2_1 (LAB2_1)
+
+
+SEGMENT                          DATA_GROUP          IDATA_GROUP         PDATA_GROUP         XDATA_GROUP
+  +--> CALLED SEGMENT          START    LENGTH     START    LENGTH     START    LENGTH     START    LENGTH
+----------------------------------------------------------------------------------------------------------
+?C_C51STARTUP                  -----    -----      -----    -----      -----    -----      -----    -----
+  +--> ?PR?MAIN?LAB2_1
+
+?PR?MAIN?LAB2_1                0008H    0002H      000AH    0002H      0000H    0002H      0002H    0002H
+
+
+
+SYMBOL TABLE OF MODULE:  lab2_1 (LAB2_1)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        LAB2_1
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:0800H         PUBLIC        main
+  -------         PROC          MAIN
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/20/2023  19:14:12  PAGE 2
+
+
+  -------         DO            
+  I:000AH         SYMBOL        var_idata
+  X:0002H         SYMBOL        var_xdata
+  X:0000H         SYMBOL        var_pdata
+  D:0008H         SYMBOL        var_code
+  -------         ENDDO         
+  C:0800H         LINE#         1
+  C:0800H         LINE#         2
+  C:0807H         LINE#         4
+  C:0810H         LINE#         6
+  C:0818H         LINE#         8
+  C:081EH         LINE#         10
+  C:081EH         LINE#         12
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        LAB2_1
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0020H BYTE ( 1%) *
+******************************************************************************
+
+Program Size: data=13.0 xdata=4 code=47
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
