@@ -1,0 +1,4 @@
+".\Objects\lab2.obj" 
+TO ".\Objects\lab2" 
+PRINT(".\Listings\lab2.m51") CODE( 0X0000-0X03FF )
+XDATA( 0X0000-0X04FF )

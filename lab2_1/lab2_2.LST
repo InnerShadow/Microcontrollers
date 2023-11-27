@@ -1,10 +1,10 @@
-C51 COMPILER V9.53.0.0   LAB2_2                                                            11/20/2023 19:35:24 PAGE 1   
+C51 COMPILER V9.53.0.0   LAB2_2                                                            11/21/2023 09:34:45 PAGE 1   
 
 
 C51 COMPILER V9.53.0.0, COMPILATION OF MODULE LAB2_2
 OBJECT MODULE PLACED IN lab2_2.OBJ
-COMPILER INVOKED BY: E:\Keil\C51\BIN\C51.EXE lab2_2.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND CODE LISTINCLUDE SYMBO
-                    -LS TABS(2)
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.exe lab2_2.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND CODE LISTINCLUDE SY
+                    -MBOLS TABS(2)
 
 line level    source
 
@@ -62,7 +62,7 @@ line level    source
   51      =1  sbit IE1  = 0x8B;
   52      =1  sbit IT1  = 0x8A;
   53      =1  sbit IE0  = 0x89;
-C51 COMPILER V9.53.0.0   LAB2_2                                                            11/20/2023 19:35:24 PAGE 2   
+C51 COMPILER V9.53.0.0   LAB2_2                                                            11/21/2023 09:34:45 PAGE 2   
 
   54      =1  sbit IT0  = 0x88;
   55      =1  
@@ -126,7 +126,7 @@ line level    source
   23   1          W2 = iAl * (iB0 + iBl);
   24   1          iCl = iC0 - iCl;
   25   1          iC0 -= W2;
-C51 COMPILER V9.53.0.0   LAB2_2                                                            11/20/2023 19:35:24 PAGE 3   
+C51 COMPILER V9.53.0.0   LAB2_2                                                            11/21/2023 09:34:45 PAGE 3   
 
   26   1      
   27   1          TR0 = 0; 

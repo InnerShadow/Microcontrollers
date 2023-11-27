@@ -1,0 +1,45 @@
+CHAR				TYPE   
+track = 2, code = 3, w  data
+track = 2, code = 4, w  idata
+track = 5, code = 6, w	xdata
+track = 4, code = 5, w	pdata
+track = 8, code = 8, r  code
+
+INT
+track = 4, code = 6, w	data
+track = 4, code = 7, w  idata
+track = 10, code = 9, w xdata
+track = 8, code = 8, w  pdata
+track = 10, code = 12, r  code
+
+long
+track = 8, code = 12, w   data
+track = 29, code = 8, w   idata
+track = 115, code = 9, w  xdata
+track = 33, code = 8, w   pdata
+track = 30, code = 13, r  code
+
+float
+track = 8, code = 12, w    data
+track = 29, code = 8, w    idata
+track = 115, code = 9, w   xdata
+track = 33, code = 8, w    pdata
+track = 30, code = 13, r   code
+
+float
+track = 16, code = 16, r	data
+track = 24, code = 12, r    idata
+track = 28, code = 22, r    xdata
+track = 24, code = 21, r    pdata
+
+int
+track = 4, code = 6, r		data
+track = 6, code = 9, r      idata
+track = 10, code = 10, r    xdata
+track = 8, code = 9, r      pdata
+
+char  
+track = 2, code = 3, r		data
+track = 5, code = 6, r      idata
+track = 7, code = 7, r      xdata
+track = 6, code = 6, r      pdata

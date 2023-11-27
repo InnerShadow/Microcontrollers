@@ -1,81 +1,252 @@
-C51 COMPILER V9.53.0.0   LAB2_1                                                            11/20/2023 19:35:24 PAGE 1   
+C51 COMPILER V9.53.0.0   LAB2_1                                                            11/21/2023 10:05:16 PAGE 1   
 
 
 C51 COMPILER V9.53.0.0, COMPILATION OF MODULE LAB2_1
 OBJECT MODULE PLACED IN lab2_1.OBJ
-COMPILER INVOKED BY: E:\Keil\C51\BIN\C51.EXE lab2_1.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND CODE LISTINCLUDE SYMBO
-                    -LS TABS(2)
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.exe lab2_1.c ROM(SMALL) OPTIMIZE(0,SPEED) BROWSE DEBUG OBJECTEXTEND CODE LIS
+                    -TINCLUDE SYMBOLS TABS(2)
 
 line level    source
 
-   1          void main() {
-   2   1          idata var_idata = 1;
-   3   1      
-   4   1          xdata var_xdata = 2;
-   5   1      
-   6   1          pdata var_pdata = 3;
-   7   1      
-   8   1          int var_code = 4;
-   9   1      
-  10   1          while (1) {
-  11   2              // Main loop
-  12   2          }
-  13   1      }
-C51 COMPILER V9.53.0.0   LAB2_1                                                            11/20/2023 19:35:24 PAGE 2   
+   1          // Header:
+   2          // File Name: 
+   3          // Author:
+   4          // Date:
+   5          //
+   6          
+   7          #define TYPE char
+   8          #define velue 36
+   9          
+  10          data TYPE var_data;
+  11          
+  12          idata TYPE var_idata;
+  13          
+  14          xdata TYPE var_xdata;
+  15          
+  16          pdata TYPE var_pdata;
+  17          
+  18          code TYPE var_code = velue;
+  19          
+  20          
+  21          void main() {
+  22   1        
+  23   1          int a = 0;
+  24   1          int b = 1;
+  25   1          int c = 5;
+  26   1          int d = 10;
+  27   1        
+  28   1          var_data = velue;
+  29   1        
+  30   1          a = b * c + d - var_data;
+  31   1      
+  32   1          var_xdata = velue;
+  33   1        
+  34   1          a = b + c / d * c - var_xdata;
+  35   1      
+  36   1          var_pdata = velue;
+  37   1        
+  38   1          c = b + d * a + d - var_xdata;
+  39   1        
+  40   1          var_idata = velue;
+  41   1        
+  42   1          a = b + c * d;
+  43   1          
+  44   1          var_data = var_code;
+  45   1      
+  46   1          a += var_data;
+  47   1      
+  48   1          //var_code = velue;
+  49   1      
+  50   1          while (1) {
+  51   2              // Main loop
+  52   2          }
+  53   1      }
+C51 COMPILER V9.53.0.0   LAB2_1                                                            11/21/2023 10:05:16 PAGE 2   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
 
              ; FUNCTION main (BEGIN)
-                                           ; SOURCE LINE # 1
-                                           ; SOURCE LINE # 2
-0000 7800        R     MOV     R0,#LOW var_idata
-0002 7600              MOV     @R0,#00H
-0004 08                INC     R0
-0005 7601              MOV     @R0,#01H
-                                           ; SOURCE LINE # 4
-0007 900000      R     MOV     DPTR,#var_xdata
-000A E4                CLR     A
-000B F0                MOVX    @DPTR,A
-000C A3                INC     DPTR
-000D 7402              MOV     A,#02H
-000F F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 6
-0010 7800        R     MOV     R0,#LOW var_pdata
-0012 E4                CLR     A
-0013 F2                MOVX    @R0,A
-0014 08                INC     R0
-0015 7403              MOV     A,#03H
-0017 F2                MOVX    @R0,A
-                                           ; SOURCE LINE # 8
-0018 750000      R     MOV     var_code,#00H
-001B 750004      R     MOV     var_code+01H,#04H
-001E         ?C0001:
-                                           ; SOURCE LINE # 10
-                                           ; SOURCE LINE # 12
-001E 80FE              SJMP    ?C0001
+                                           ; SOURCE LINE # 21
+                                           ; SOURCE LINE # 23
+0000 750000      R     MOV     a,#00H
+0003 750000      R     MOV     a+01H,#00H
+                                           ; SOURCE LINE # 24
+0006 750000      R     MOV     b,#00H
+0009 750001      R     MOV     b+01H,#01H
+                                           ; SOURCE LINE # 25
+000C 750000      R     MOV     c,#00H
+000F 750005      R     MOV     c+01H,#05H
+                                           ; SOURCE LINE # 26
+0012 750000      R     MOV     d,#00H
+0015 75000A      R     MOV     d+01H,#0AH
+                                           ; SOURCE LINE # 28
+0018 750024      R     MOV     var_data,#024H
+                                           ; SOURCE LINE # 30
+001B AC00        R     MOV     R4,c
+001D AD00        R     MOV     R5,c+01H
+001F AE00        R     MOV     R6,b
+0021 AF00        R     MOV     R7,b+01H
+0023 1100        E     ACALL   ?C?IMUL
+0025 EF                MOV     A,R7
+0026 2500        R     ADD     A,d+01H
+0028 FF                MOV     R7,A
+0029 EE                MOV     A,R6
+002A 3500        R     ADDC    A,d
+002C FE                MOV     R6,A
+002D AD00        R     MOV     R5,var_data
+002F ED                MOV     A,R5
+0030 33                RLC     A
+0031 95E0              SUBB    A,ACC
+0033 FC                MOV     R4,A
+0034 C3                CLR     C
+0035 EF                MOV     A,R7
+0036 9D                SUBB    A,R5
+0037 F500        R     MOV     a+01H,A
+0039 EE                MOV     A,R6
+003A 9C                SUBB    A,R4
+003B F500        R     MOV     a,A
+                                           ; SOURCE LINE # 32
+003D 900000      R     MOV     DPTR,#var_xdata
+0040 7424              MOV     A,#024H
+0042 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 34
+0043 AC00        R     MOV     R4,d
+0045 AD00        R     MOV     R5,d+01H
+0047 AE00        R     MOV     R6,c
+0049 AF00        R     MOV     R7,c+01H
+004B 1100        E     ACALL   ?C?SIDIV
+004D AC00        R     MOV     R4,c
+004F AD00        R     MOV     R5,c+01H
+0051 1100        E     ACALL   ?C?IMUL
+0053 EF                MOV     A,R7
+0054 2500        R     ADD     A,b+01H
+0056 FF                MOV     R7,A
+0057 EE                MOV     A,R6
+0058 3500        R     ADDC    A,b
+005A FE                MOV     R6,A
+C51 COMPILER V9.53.0.0   LAB2_1                                                            11/21/2023 10:05:16 PAGE 3   
+
+005B 900000      R     MOV     DPTR,#var_xdata
+005E E0                MOVX    A,@DPTR
+005F FD                MOV     R5,A
+0060 ED                MOV     A,R5
+0061 33                RLC     A
+0062 95E0              SUBB    A,ACC
+0064 FC                MOV     R4,A
+0065 C3                CLR     C
+0066 EF                MOV     A,R7
+0067 9D                SUBB    A,R5
+0068 F500        R     MOV     a+01H,A
+006A EE                MOV     A,R6
+006B 9C                SUBB    A,R4
+006C F500        R     MOV     a,A
+                                           ; SOURCE LINE # 36
+006E 7800        R     MOV     R0,#LOW var_pdata
+0070 7424              MOV     A,#024H
+0072 F2                MOVX    @R0,A
+                                           ; SOURCE LINE # 38
+0073 AC00        R     MOV     R4,a
+0075 AD00        R     MOV     R5,a+01H
+0077 AE00        R     MOV     R6,d
+0079 AF00        R     MOV     R7,d+01H
+007B 1100        E     ACALL   ?C?IMUL
+007D EF                MOV     A,R7
+007E 2500        R     ADD     A,b+01H
+0080 FF                MOV     R7,A
+0081 EE                MOV     A,R6
+0082 3500        R     ADDC    A,b
+0084 FE                MOV     R6,A
+0085 EF                MOV     A,R7
+0086 2500        R     ADD     A,d+01H
+0088 FF                MOV     R7,A
+0089 EE                MOV     A,R6
+008A 3500        R     ADDC    A,d
+008C FE                MOV     R6,A
+008D 900000      R     MOV     DPTR,#var_xdata
+0090 E0                MOVX    A,@DPTR
+0091 FD                MOV     R5,A
+0092 ED                MOV     A,R5
+0093 33                RLC     A
+0094 95E0              SUBB    A,ACC
+0096 FC                MOV     R4,A
+0097 C3                CLR     C
+0098 EF                MOV     A,R7
+0099 9D                SUBB    A,R5
+009A F500        R     MOV     c+01H,A
+009C EE                MOV     A,R6
+009D 9C                SUBB    A,R4
+009E F500        R     MOV     c,A
+                                           ; SOURCE LINE # 40
+00A0 7800        R     MOV     R0,#LOW var_idata
+00A2 7624              MOV     @R0,#024H
+                                           ; SOURCE LINE # 42
+00A4 AC00        R     MOV     R4,d
+00A6 AD00        R     MOV     R5,d+01H
+00A8 AE00        R     MOV     R6,c
+00AA AF00        R     MOV     R7,c+01H
+00AC 1100        E     ACALL   ?C?IMUL
+00AE EF                MOV     A,R7
+00AF 2500        R     ADD     A,b+01H
+00B1 F500        R     MOV     a+01H,A
+C51 COMPILER V9.53.0.0   LAB2_1                                                            11/21/2023 10:05:16 PAGE 4   
+
+00B3 EE                MOV     A,R6
+00B4 3500        R     ADDC    A,b
+00B6 F500        R     MOV     a,A
+                                           ; SOURCE LINE # 44
+00B8 900000      R     MOV     DPTR,#var_code
+00BB E4                CLR     A
+00BC 93                MOVC    A,@A+DPTR
+00BD FF                MOV     R7,A
+00BE 8F00        R     MOV     var_data,R7
+                                           ; SOURCE LINE # 46
+00C0 AF00        R     MOV     R7,var_data
+00C2 EF                MOV     A,R7
+00C3 33                RLC     A
+00C4 95E0              SUBB    A,ACC
+00C6 FE                MOV     R6,A
+00C7 EF                MOV     A,R7
+00C8 2500        R     ADD     A,a+01H
+00CA F500        R     MOV     a+01H,A
+00CC EE                MOV     A,R6
+00CD 3500        R     ADDC    A,a
+00CF F500        R     MOV     a,A
+00D1         ?C0001:
+                                           ; SOURCE LINE # 50
+                                           ; SOURCE LINE # 52
+00D1 80FE              SJMP    ?C0001
+00D3         ?C0002:
+                                           ; SOURCE LINE # 53
+00D3         ?C0003:
+00D3 22                RET     
              ; FUNCTION main (END)
 
-C51 COMPILER V9.53.0.0   LAB2_1                                                            11/20/2023 19:35:24 PAGE 3   
+C51 COMPILER V9.53.0.0   LAB2_1                                                            11/21/2023 10:05:16 PAGE 5   
 
 NAME                                    CLASS   MSPACE  TYPE    OFFSET  SIZE
 ====                                    =====   ======  ====    ======  ====
 
 
 main . . . . . . . . . . . . . . . . .  PUBLIC   CODE   PROC     0000H  -----
-  var_idata. . . . . . . . . . . . . .  AUTO     IDATA  INT      0000H  2
-  var_xdata. . . . . . . . . . . . . .  AUTO     XDATA  INT      0000H  2
-  var_pdata. . . . . . . . . . . . . .  AUTO     PDATA  INT      0000H  2
-  var_code . . . . . . . . . . . . . .  AUTO     DATA   INT      0000H  2
+  a. . . . . . . . . . . . . . . . . .  AUTO     DATA   INT      0000H  2
+  b. . . . . . . . . . . . . . . . . .  AUTO     DATA   INT      0002H  2
+  c. . . . . . . . . . . . . . . . . .  AUTO     DATA   INT      0004H  2
+  d. . . . . . . . . . . . . . . . . .  AUTO     DATA   INT      0006H  2
+var_idata. . . . . . . . . . . . . . .  PUBLIC   IDATA  CHAR     0000H  1
+var_pdata. . . . . . . . . . . . . . .  PUBLIC   PDATA  CHAR     0000H  1
+var_xdata. . . . . . . . . . . . . . .  PUBLIC   XDATA  CHAR     0000H  1
+var_data . . . . . . . . . . . . . . .  PUBLIC   DATA   CHAR     0000H  1
+var_code . . . . . . . . . . . . . . .  PUBLIC   CODE   CHAR     0000H  1
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =     32    ----
-   CONSTANT SIZE    =   ----    ----
-   XDATA SIZE       =   ----       2
-   PDATA SIZE       =   ----       2
-   DATA SIZE        =   ----       2
-   IDATA SIZE       =   ----       2
+   CODE SIZE        =    212    ----
+   CONSTANT SIZE    =      1    ----
+   XDATA SIZE       =      1    ----
+   PDATA SIZE       =      1    ----
+   DATA SIZE        =      9    ----
+   IDATA SIZE       =      1    ----
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.
 

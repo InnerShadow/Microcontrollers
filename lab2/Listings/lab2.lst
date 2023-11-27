@@ -1,0 +1,215 @@
+C51 COMPILER V9.56.0.0   LAB2                                                              11/21/2023 11:23:28 PAGE 1   
+
+
+C51 COMPILER V9.56.0.0, COMPILATION OF MODULE LAB2
+OBJECT MODULE PLACED IN .\Objects\lab2.obj
+COMPILER INVOKED BY: C:\Program Files\KEIL_5_956\C51\BIN\C51.EXE lab2.c ROM(SMALL) OPTIMIZE(0,SPEED) BROWSE DEBUG OBJECT
+                    -EXTEND CODE LISTINCLUDE SYMBOLS PRINT(.\Listings\lab2.lst) TABS(2) OBJECT(.\Objects\lab2.obj)
+
+line level    source
+
+   1          #define TYPE char
+   2          #define value 10
+   3          
+   4          data TYPE var_data;
+   5          
+   6          idata TYPE var_idata;
+   7          
+   8          xdata TYPE var_xdata;
+   9          
+  10          pdata TYPE var_pdata;
+  11          
+  12          code TYPE var_code = value;
+  13          
+  14          void main(){
+  15   1        
+  16   1        int a = 10;
+  17   1        int b = 20l;
+  18   1        int c = 23;
+  19   1        
+  20   1        //var_data = value;
+  21   1        
+  22   1      //  a = a + b * c;
+  23   1      //  
+  24   1      //  var_idata = value;
+  25   1      //  
+  26   1      //  a = a + b * c - a - var_idata;
+  27   1      //  
+  28   1      //  var_xdata = value;
+  29   1      //  
+  30   1      //  c = a + b * a;
+  31   1      //  
+  32   1      //  var_pdata = value;
+  33   1      //  
+  34   1      //  a = b * c + a;
+  35   1      //  
+  36   1      //  var_data = var_code;
+  37   1      //  
+  38   1      //  a += var_data;
+  39   1      //  
+  40   1      //  b = a + c;
+  41   1      
+  42   1        TYPE read = 200;
+  43   1        
+  44   1        read = var_data;
+  45   1        
+  46   1        a = a + b * c * a;
+  47   1        
+  48   1        read = var_idata;
+  49   1        
+  50   1        a = a + b * c * c;
+  51   1        
+  52   1        read = var_xdata;
+  53   1        
+  54   1        a = a + b * c * b;
+C51 COMPILER V9.56.0.0   LAB2                                                              11/21/2023 11:23:28 PAGE 2   
+
+  55   1        
+  56   1        read = var_pdata;
+  57   1        
+  58   1        a = a + b * c + a;
+  59   1      
+  60   1        
+  61   1        
+  62   1        while(1){}
+  63   1          
+  64   1      }
+C51 COMPILER V9.56.0.0   LAB2                                                              11/21/2023 11:23:28 PAGE 3   
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+             ; FUNCTION main (BEGIN)
+                                           ; SOURCE LINE # 14
+                                           ; SOURCE LINE # 16
+0000 750000      R     MOV     a,#00H
+0003 75000A      R     MOV     a+01H,#0AH
+                                           ; SOURCE LINE # 17
+0006 750000      R     MOV     b,#00H
+0009 750014      R     MOV     b+01H,#014H
+                                           ; SOURCE LINE # 18
+000C 750000      R     MOV     c,#00H
+000F 750017      R     MOV     c+01H,#017H
+                                           ; SOURCE LINE # 42
+0012 7500C8      R     MOV     read,#0C8H
+                                           ; SOURCE LINE # 44
+0015 850000      R     MOV     read,var_data
+                                           ; SOURCE LINE # 46
+0018 AC00        R     MOV     R4,c
+001A AD00        R     MOV     R5,c+01H
+001C AE00        R     MOV     R6,b
+001E AF00        R     MOV     R7,b+01H
+0020 1100        E     ACALL   ?C?IMUL
+0022 AC00        R     MOV     R4,a
+0024 AD00        R     MOV     R5,a+01H
+0026 1100        E     ACALL   ?C?IMUL
+0028 EF                MOV     A,R7
+0029 2500        R     ADD     A,a+01H
+002B F500        R     MOV     a+01H,A
+002D EE                MOV     A,R6
+002E 3500        R     ADDC    A,a
+0030 F500        R     MOV     a,A
+                                           ; SOURCE LINE # 48
+0032 7800        R     MOV     R0,#LOW var_idata
+0034 E6                MOV     A,@R0
+0035 FF                MOV     R7,A
+0036 8F00        R     MOV     read,R7
+                                           ; SOURCE LINE # 50
+0038 AC00        R     MOV     R4,c
+003A AD00        R     MOV     R5,c+01H
+003C AE00        R     MOV     R6,b
+003E AF00        R     MOV     R7,b+01H
+0040 1100        E     ACALL   ?C?IMUL
+0042 AC00        R     MOV     R4,c
+0044 AD00        R     MOV     R5,c+01H
+0046 1100        E     ACALL   ?C?IMUL
+0048 EF                MOV     A,R7
+0049 2500        R     ADD     A,a+01H
+004B F500        R     MOV     a+01H,A
+004D EE                MOV     A,R6
+004E 3500        R     ADDC    A,a
+0050 F500        R     MOV     a,A
+                                           ; SOURCE LINE # 52
+0052 900000      R     MOV     DPTR,#var_xdata
+0055 E0                MOVX    A,@DPTR
+0056 FF                MOV     R7,A
+0057 8F00        R     MOV     read,R7
+                                           ; SOURCE LINE # 54
+0059 AC00        R     MOV     R4,c
+005B AD00        R     MOV     R5,c+01H
+005D AE00        R     MOV     R6,b
+C51 COMPILER V9.56.0.0   LAB2                                                              11/21/2023 11:23:28 PAGE 4   
+
+005F AF00        R     MOV     R7,b+01H
+0061 1100        E     ACALL   ?C?IMUL
+0063 AC00        R     MOV     R4,b
+0065 AD00        R     MOV     R5,b+01H
+0067 1100        E     ACALL   ?C?IMUL
+0069 EF                MOV     A,R7
+006A 2500        R     ADD     A,a+01H
+006C F500        R     MOV     a+01H,A
+006E EE                MOV     A,R6
+006F 3500        R     ADDC    A,a
+0071 F500        R     MOV     a,A
+                                           ; SOURCE LINE # 56
+0073 7800        R     MOV     R0,#LOW var_pdata
+0075 E2                MOVX    A,@R0
+0076 FF                MOV     R7,A
+0077 8F00        R     MOV     read,R7
+                                           ; SOURCE LINE # 58
+0079 AC00        R     MOV     R4,c
+007B AD00        R     MOV     R5,c+01H
+007D AE00        R     MOV     R6,b
+007F AF00        R     MOV     R7,b+01H
+0081 1100        E     ACALL   ?C?IMUL
+0083 EF                MOV     A,R7
+0084 2500        R     ADD     A,a+01H
+0086 FF                MOV     R7,A
+0087 EE                MOV     A,R6
+0088 3500        R     ADDC    A,a
+008A FE                MOV     R6,A
+008B EF                MOV     A,R7
+008C 2500        R     ADD     A,a+01H
+008E F500        R     MOV     a+01H,A
+0090 EE                MOV     A,R6
+0091 3500        R     ADDC    A,a
+0093 F500        R     MOV     a,A
+0095         ?C0001:
+                                           ; SOURCE LINE # 62
+0095 80FE              SJMP    ?C0001
+0097         ?C0002:
+                                           ; SOURCE LINE # 64
+0097         ?C0003:
+0097 22                RET     
+             ; FUNCTION main (END)
+
+C51 COMPILER V9.56.0.0   LAB2                                                              11/21/2023 11:23:28 PAGE 5   
+
+NAME                                    CLASS   MSPACE  TYPE    OFFSET  SIZE
+====                                    =====   ======  ====    ======  ====
+
+
+main . . . . . . . . . . . . . . . . .  PUBLIC   CODE   PROC     0000H  -----
+  a. . . . . . . . . . . . . . . . . .  AUTO     DATA   INT      0000H  2
+  b. . . . . . . . . . . . . . . . . .  AUTO     DATA   INT      0002H  2
+  c. . . . . . . . . . . . . . . . . .  AUTO     DATA   INT      0004H  2
+  read . . . . . . . . . . . . . . . .  AUTO     DATA   CHAR     0006H  1
+var_idata. . . . . . . . . . . . . . .  PUBLIC   IDATA  CHAR     0000H  1
+var_pdata. . . . . . . . . . . . . . .  PUBLIC   PDATA  CHAR     0000H  1
+var_xdata. . . . . . . . . . . . . . .  PUBLIC   XDATA  CHAR     0000H  1
+var_data . . . . . . . . . . . . . . .  PUBLIC   DATA   CHAR     0000H  1
+var_code . . . . . . . . . . . . . . .  PUBLIC   CODE   CHAR     0000H  1
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    152    ----
+   CONSTANT SIZE    =      1    ----
+   XDATA SIZE       =      1    ----
+   PDATA SIZE       =      1    ----
+   DATA SIZE        =      8    ----
+   IDATA SIZE       =      1    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

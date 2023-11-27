@@ -1,2 +1,5 @@
 "lab2_1.obj" 
 TO "lab2_1" 
+IXREF 
+CODE( 0X0000-0X03FF )
+XDATA( 0X0000-0X03FF )

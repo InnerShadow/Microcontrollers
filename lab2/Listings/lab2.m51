@@ -1,0 +1,104 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        11/21/2023  11:23:28  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\PROGRAM FILES\KEIL_5_956\C51\BIN\BL51.EXE .\Objects\lab2.obj TO .\Objects\lab2 PRINT (.\Listings\lab2.m51) CODE (0X00
+>> 00-0X03FF) XDATA (0X0000-0X04FF)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\lab2.obj (LAB2)
+  C:\PROGRAM FILES\KEIL_5_956\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\PROGRAM FILES\KEIL_5_956\C51\LIB\C51S.LIB (?C?IMUL)
+
+
+LINK MAP OF MODULE:  .\Objects\lab2 (LAB2)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0007H     UNIT         ?DT?MAIN?LAB2
+            DATA    000FH     0001H     UNIT         ?DT?LAB2
+            IDATA   0010H     0001H     UNIT         ?ID?LAB2
+            IDATA   0011H     0001H     UNIT         ?STACK
+
+            * * * * * * *  X D A T A   M E M O R Y  * * * * * * *
+            XDATA   0000H     0001H     INPAGE       ?PD?LAB2
+            XDATA   0001H     0001H     UNIT         ?XD?LAB2
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0098H     INBLOCK      ?PR?MAIN?LAB2
+            CODE    009BH     0012H     UNIT         ?C?LIB_CODE
+            CODE    00ADH     000CH     UNIT         ?C_C51STARTUP
+            CODE    00B9H     0001H     UNIT         ?CO?LAB2
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\lab2 (LAB2)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?LAB2
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\lab2 (LAB2)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        LAB2
+  C:0000H         SYMBOL        _ICE_DUMMY_
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/21/2023  11:23:28  PAGE 2
+
+
+  C:0003H         PUBLIC        main
+  I:0010H         PUBLIC        var_idata
+  X:0000H         PUBLIC        var_pdata
+  X:0001H         PUBLIC        var_xdata
+  D:000FH         PUBLIC        var_data
+  C:00B9H         PUBLIC        var_code
+  -------         PROC          MAIN
+  -------         DO            
+  D:0008H         SYMBOL        a
+  D:000AH         SYMBOL        b
+  D:000CH         SYMBOL        c
+  D:000EH         SYMBOL        read
+  -------         ENDDO         
+  C:0003H         LINE#         14
+  C:0003H         LINE#         16
+  C:0009H         LINE#         17
+  C:000FH         LINE#         18
+  C:0015H         LINE#         42
+  C:0018H         LINE#         44
+  C:001BH         LINE#         46
+  C:0035H         LINE#         48
+  C:003BH         LINE#         50
+  C:0055H         LINE#         52
+  C:005CH         LINE#         54
+  C:0076H         LINE#         56
+  C:007CH         LINE#         58
+  C:0098H         LINE#         62
+  C:009AH         LINE#         64
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        LAB2
+
+  -------         MODULE        ?C?IMUL
+  C:009BH         PUBLIC        ?C?IMUL
+  -------         ENDMOD        ?C?IMUL
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?LAB2
+
+Program Size: data=18.0 xdata=2 code=186
+LINK/LOCATE RUN COMPLETE.  1 WARNING(S),  0 ERROR(S)
