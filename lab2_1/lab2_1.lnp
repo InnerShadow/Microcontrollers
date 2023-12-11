@@ -1,5 +1,5 @@
-"lab2_1.obj" 
+"fucktorial.obj",
+"STARTUP.obj" 
 TO "lab2_1" 
-IXREF 
-CODE( 0X0000-0X03FF )
-XDATA( 0X0000-0X03FF )
+RAMSIZE(256) 
+XDATA( 0X0000-0XFFFF )

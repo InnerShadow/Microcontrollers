@@ -1,22 +1,38 @@
-BL51 BANKED LINKER/LOCATER V6.22                                                        11/21/2023  10:05:16  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22                                                        11/29/2023  16:41:25  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
-C:\KEIL_V5\C51\BIN\BL51.EXE lab2_1.obj TO lab2_1 IXREF CODE (0X0000-0X03FF) XDATA (0X0000-0X03FF)
+C:\PROGRAM FILES\KEIL_5_956\C51\BIN\BL51.EXE fucktorial.obj, STARTUP.obj TO lab2_1 RAMSIZE (256) XDATA (0X0000-0XFFFF)
 
 
 MEMORY MODEL: SMALL
 
 
 INPUT MODULES INCLUDED:
-  lab2_1.obj (LAB2_1)
-  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
-  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?IMUL)
-  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?SIDIV)
-  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?UIDIV)
+  fucktorial.obj (FUCKTORIAL)
+  STARTUP.obj (?C_STARTUP)
+  C:\PROGRAM FILES\KEIL_5_956\C51\LIB\C51S.LIB (?C_INIT)
+  C:\PROGRAM FILES\KEIL_5_956\C51\LIB\C51S.LIB (?C?SLCMP)
+  C:\PROGRAM FILES\KEIL_5_956\C51\LIB\C51S.LIB (?C_IBP)
+  C:\PROGRAM FILES\KEIL_5_956\C51\LIB\C51S.LIB (PRINTF)
+  C:\PROGRAM FILES\KEIL_5_956\C51\LIB\C51S.LIB (?C?STRCPY)
+  C:\PROGRAM FILES\KEIL_5_956\C51\LIB\C51S.LIB (SETJMP)
+  C:\PROGRAM FILES\KEIL_5_956\C51\LIB\C51S.LIB (?C?CLDPTR)
+  C:\PROGRAM FILES\KEIL_5_956\C51\LIB\C51S.LIB (?C?CLDOPTR)
+  C:\PROGRAM FILES\KEIL_5_956\C51\LIB\C51S.LIB (?C?CSTPTR)
+  C:\PROGRAM FILES\KEIL_5_956\C51\LIB\C51S.LIB (?C?CSTOPTR)
+  C:\PROGRAM FILES\KEIL_5_956\C51\LIB\C51S.LIB (?C?ILDPTR)
+  C:\PROGRAM FILES\KEIL_5_956\C51\LIB\C51S.LIB (?C?ILDOPTR)
+  C:\PROGRAM FILES\KEIL_5_956\C51\LIB\C51S.LIB (?C?ISTPTR)
+  C:\PROGRAM FILES\KEIL_5_956\C51\LIB\C51S.LIB (?C?ISTOPTR)
+  C:\PROGRAM FILES\KEIL_5_956\C51\LIB\C51S.LIB (?C?PLDIIDATA)
+  C:\PROGRAM FILES\KEIL_5_956\C51\LIB\C51S.LIB (?C?CCASE)
+  C:\PROGRAM FILES\KEIL_5_956\C51\LIB\C51S.LIB (?C_XBP)
+  C:\PROGRAM FILES\KEIL_5_956\C51\LIB\C51S.LIB (?C_PBP)
+  C:\PROGRAM FILES\KEIL_5_956\C51\LIB\C51S.LIB (PUTCHAR)
 
 
-LINK MAP OF MODULE:  lab2_1 (LAB2_1)
+LINK MAP OF MODULE:  lab2_1 (FUCKTORIAL)
 
 
             TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
@@ -24,269 +40,231 @@ LINK MAP OF MODULE:  lab2_1 (LAB2_1)
 
             * * * * * * *   D A T A   M E M O R Y   * * * * * * *
             REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
-            DATA    0008H     0008H     UNIT         ?DT?MAIN?LAB2_1
-            DATA    0010H     0001H     UNIT         ?DT?LAB2_1
-            IDATA   0011H     0001H     UNIT         ?ID?LAB2_1
-            IDATA   0012H     0001H     UNIT         ?STACK
-
-            * * * * * * *  X D A T A   M E M O R Y  * * * * * * *
-            XDATA   0000H     0001H     INPAGE       ?PD?LAB2_1
-            XDATA   0001H     0001H     UNIT         ?XD?LAB2_1
+            DATA    0008H     0018H     UNIT         ?DT?FUCKTORIAL
+            BIT     0020H.0   0001H.1   UNIT         _BIT_GROUP_
+                    0021H.1   0000H.7                *** GAP ***
+            DATA    0022H     0014H     UNIT         _DATA_GROUP_
+            DATA    0036H     0004H     UNIT         ?C?LIB_DATA
+            IDATA   003AH     0001H     UNIT         ?STACK
 
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
             CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     035CH     UNIT         ?PR?PRINTF?PRINTF
+            CODE    035FH     025EH     UNIT         ?C?LIB_CODE
+            CODE    05BDH     008FH     UNIT         ?C_C51STARTUP
+            CODE    064CH     0075H     INBLOCK      ?PR?MAIN?FUCKTORIAL
+            CODE    06C1H     005FH     UNIT         ?PR?SETJMP?SETJMP
+            CODE    0720H     004DH     INBLOCK      ?PR?_?FIBONACCI?FUCKTORIAL
+            CODE    076DH     0027H     UNIT         ?PR?PUTCHAR?PUTCHAR
+            CODE    0794H     0019H     UNIT         ?CO?FUCKTORIAL
+            CODE    07ADH     0013H     INBLOCK      ?PR?FSUBROUTINE?FUCKTORIAL
+            CODE    07C0H     0005H     UNIT         ?C_INITSEG
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/29/2023  16:41:25  PAGE 2
 
 
 
-OVERLAY MAP OF MODULE:   lab2_1 (LAB2_1)
 
 
-SEGMENT
-  +--> CALLED SEGMENT
----------------------
-?C_C51STARTUP
-  +--> ?PR?MAIN?LAB2_1
-
-?PR?MAIN?LAB2_1
-  +--> ?CO?LAB2_1
+OVERLAY MAP OF MODULE:   lab2_1 (FUCKTORIAL)
 
 
+SEGMENT                               BIT_GROUP          DATA_GROUP 
+  +--> CALLED SEGMENT              START    LENGTH     START    LENGTH
+----------------------------------------------------------------------
+?C_C51STARTUP                      -----    -----      -----    -----
+  +--> ?PR?MAIN?FUCKTORIAL
+  +--> ?C_INITSEG
 
-IGNORED SEGMENTS:
-   ?PR?MAIN?LAB2_1
-   ?CO?LAB2_1
-   ?C_C51STARTUP
-   ?C?LIB_CODE
+?PR?MAIN?FUCKTORIAL                -----    -----      -----    -----
+  +--> ?CO?FUCKTORIAL
+  +--> ?PR?SETJMP?SETJMP
+  +--> ?PR?_?FIBONACCI?FUCKTORIAL
+  +--> ?PR?PRINTF?PRINTF
+  +--> ?PR?FSUBROUTINE?FUCKTORIAL
 
+?PR?PRINTF?PRINTF                  0020H.0  0001H.1    0022H    0014H
+  +--> ?PR?PUTCHAR?PUTCHAR
 
-BL51 BANKED LINKER/LOCATER V6.22                                                      11/21/2023  10:05:16  PAGE 2
-
-
-
-IGNORED SYMBOLS:
-   ?C?IMUL
-   ?C?SIDIV
-   ?C?UIDIV
-   ?C_START
-   MAIN
-   VAR_CODE
+?PR?FSUBROUTINE?FUCKTORIAL         -----    -----      -----    -----
+  +--> ?PR?SETJMP?SETJMP
 
 
 
-SYMBOL TABLE OF MODULE:  lab2_1 (LAB2_1)
+SYMBOL TABLE OF MODULE:  lab2_1 (FUCKTORIAL)
 
   VALUE           TYPE          NAME
   ----------------------------------
 
-  -------         MODULE        LAB2_1
+  -------         MODULE        FUCKTORIAL
   C:0000H         SYMBOL        _ICE_DUMMY_
-  C:0000H         PUBLIC        main
-  I:0011H         PUBLIC        var_idata
-  X:0000H         PUBLIC        var_pdata
-  X:0001H         PUBLIC        var_xdata
-  D:0010H         PUBLIC        var_data
-  C:0000H         PUBLIC        var_code
+  C:07ADH         PUBLIC        fSubroutine
+  C:0720H         SYMBOL        _?fibonacci
+  D:0008H         SYMBOL        iValCT
+  C:064CH         PUBLIC        main
+  D:000AH         SYMBOL        iC
+  D:000CH         PUBLIC        iN
+  D:000EH         SYMBOL        cResult
+  D:0019H         PUBLIC        vJumper
   -------         PROC          MAIN
   -------         DO            
-  D:0008H         SYMBOL        a
-  D:000AH         SYMBOL        b
-  D:000CH         SYMBOL        c
-  D:000EH         SYMBOL        d
+  C:06BFH         SYMBOL        Lexit
   -------         ENDDO         
-  C:0000H         LINE#         21
-  C:0000H         LINE#         23
-  C:0006H         LINE#         24
-  C:000CH         LINE#         25
-  C:0012H         LINE#         26
-  C:0018H         LINE#         28
-  C:001BH         LINE#         30
-  C:003DH         LINE#         32
-  C:0043H         LINE#         34
-  C:006EH         LINE#         36
-  C:0073H         LINE#         38
-  C:00A0H         LINE#         40
-  C:00A4H         LINE#         42
-  C:00B8H         LINE#         44
-  C:00C0H         LINE#         46
-  C:00D1H         LINE#         50
-  C:00D1H         LINE#         52
-  C:00D3H         LINE#         53
+  C:064CH         LINE#         47
+  C:064CH         LINE#         50
+  C:0652H         LINE#         51
+  C:0660H         LINE#         52
+  C:066CH         LINE#         55
+  C:0672H         LINE#         56
+  C:0678H         LINE#         57
+  C:0686H         LINE#         58
+  C:0694H         LINE#         59
+  C:0696H         LINE#         60
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/29/2023  16:41:25  PAGE 3
+
+
+  C:0696H         LINE#         61
+  C:0696H         LINE#         62
+  C:069CH         LINE#         63
+  C:06BDH         LINE#         64
+  C:06BFH         LINE#         67
+  C:06BFH         LINE#         68
   -------         ENDPROC       MAIN
-  -------         ENDMOD        LAB2_1
+  -------         PROC          _?FIBONACCI
+  i:0000H         SYMBOL        n
+  C:0720H         LINE#         78
+  C:0726H         LINE#         79
+  C:072CH         LINE#         80
+  C:0730H         LINE#         81
+  C:0734H         LINE#         82
+  C:073AH         LINE#         84
+  C:076AH         LINE#         85
+  -------         ENDPROC       _?FIBONACCI
+  -------         PROC          FSUBROUTINE
+  C:07ADH         LINE#         96
+  C:07ADH         LINE#         98
+  -------         ENDPROC       FSUBROUTINE
+  -------         ENDMOD        FUCKTORIAL
 
-  -------         MODULE        ?C?IMUL
-  C:0000H         PUBLIC        ?C?IMUL
-  -------         ENDMOD        ?C?IMUL
-
-  -------         MODULE        ?C?SIDIV
-BL51 BANKED LINKER/LOCATER V6.22                                                      11/21/2023  10:05:16  PAGE 3
-
-
-  C:0012H         PUBLIC        ?C?SIDIV
-  -------         ENDMOD        ?C?SIDIV
-
-  -------         MODULE        ?C?UIDIV
-  C:0048H         PUBLIC        ?C?UIDIV
-  -------         ENDMOD        ?C?UIDIV
-
-
-
-INTER-MODULE CROSS-REFERENCE LISTING
-------------------------------------
-
-
-NAME . . . . USAGE    MODULE NAMES
-----------------------------------
-
-?C?IMUL. . . ILLEGAL  ?C?IMUL  LAB2_1  
-?C?SIDIV . . ILLEGAL  ?C?SIDIV  LAB2_1  
-?C?UIDIV . . ILLEGAL  ?C?UIDIV  ?C?SIDIV  
-?C_START . . ILLEGAL  ** L51 GENERATED **  ?C_STARTUP  
-?C_STARTUP . CODE;    ?C_STARTUP  LAB2_1  
-MAIN . . . . ILLEGAL  LAB2_1  
-VAR_CODE . . ILLEGAL  LAB2_1  
-VAR_DATA . . DATA;    LAB2_1  
-VAR_IDATA. . IDATA;   LAB2_1  
-VAR_PDATA. . XDATA;   LAB2_1  
-VAR_XDATA. . XDATA;   LAB2_1  
-
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE    
-    SEGMENT: ?PR?MAIN?LAB2_1
-    LENGTH:  00D4H
-
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE    
-    SEGMENT: ?PR?MAIN?LAB2_1
-    LENGTH:  00D4H
-
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE    
-    SEGMENT: ?C?LIB_CODE
-    LENGTH:  009DH
-
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE    
-    SEGMENT: ?C?LIB_CODE
-    LENGTH:  009DH
-
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE    
-    SEGMENT: ?C_C51STARTUP
-    LENGTH:  000CH
-
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE    
-    SEGMENT: ?C_C51STARTUP
-    LENGTH:  000CH
-BL51 BANKED LINKER/LOCATER V6.22                                                      11/21/2023  10:05:16  PAGE 4
+  -------         MODULE        ?C_STARTUP
+  C:05BDH         SEGMENT       ?C_C51STARTUP
+  I:003AH         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0001H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:05C0H         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:05BDH         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:05BDH         LINE#         133
+  C:05BFH         LINE#         134
+  C:05C0H         LINE#         135
+  C:05C1H         LINE#         136
+  C:05C3H         LINE#         170
+  C:05C6H         LINE#         185
+  C:05C9H         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/29/2023  16:41:25  PAGE 4
 
 
 
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE    
-    SEGMENT: ?CO?LAB2_1
-    LENGTH:  0001H
+  -------         MODULE        ?C?SLCMP
+  C:035FH         PUBLIC        ?C?SLCMP
+  -------         ENDMOD        ?C?SLCMP
 
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE    
-    SEGMENT: ?CO?LAB2_1
-    LENGTH:  0001H
+  -------         MODULE        ?C_IBP
+  D:0036H         PUBLIC        ?C_IBP
+  -------         ENDMOD        ?C_IBP
 
-*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
-    SYMBOL:  VAR_CODE
-    SEGMENT: ?CO?LAB2_1
+  -------         MODULE        PRINTF
+  D:0022H         PUBLIC        ?_PRINTF517?BYTE
+  D:0022H         PUBLIC        ?_PRINTF?BYTE
+  D:0022H         PUBLIC        ?_SPRINTF517?BYTE
+  D:0022H         PUBLIC        ?_SPRINTF?BYTE
+  C:0065H         PUBLIC        _PRINTF
+  C:0065H         PUBLIC        _PRINTF517
+  C:005FH         PUBLIC        _SPRINTF
+  C:005FH         PUBLIC        _SPRINTF517
+  -------         ENDMOD        PRINTF
 
-*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
-    SYMBOL:  MAIN
-    SEGMENT: ?PR?MAIN?LAB2_1
+  -------         MODULE        ?C?STRCPY
+  C:0441H         PUBLIC        ?C?STRCPY
+  -------         ENDMOD        ?C?STRCPY
 
-*** ERROR L120: CONTENT BELONGS TO ERRONEOUS SEGMENT
-    SEGMENT: ?CO?LAB2_1
-    MODULE:  lab2_1.obj (LAB2_1)
+  -------         MODULE        SETJMP
+  C:06F2H         PUBLIC        _LONGJMP
+  C:06C1H         PUBLIC        _SETJMP
+  -------         ENDMOD        SETJMP
 
-*** ERROR L120: CONTENT BELONGS TO ERRONEOUS SEGMENT
-    SEGMENT: ?PR?MAIN?LAB2_1
-    MODULE:  lab2_1.obj (LAB2_1)
+  -------         MODULE        ?C?CLDPTR
+  C:045EH         PUBLIC        ?C?CLDPTR
+  -------         ENDMOD        ?C?CLDPTR
 
-*** ERROR L118: REFERENCE MADE TO ERRONEOUS EXTERNAL
-    SYMBOL:  ?C?IMUL
-    MODULE:  lab2_1.obj (LAB2_1)
-    ADDRESS: 0023H
+  -------         MODULE        ?C?CLDOPTR
+  C:0477H         PUBLIC        ?C?CLDOPTR
+  -------         ENDMOD        ?C?CLDOPTR
 
-*** ERROR L118: REFERENCE MADE TO ERRONEOUS EXTERNAL
-    SYMBOL:  ?C?SIDIV
-    MODULE:  lab2_1.obj (LAB2_1)
-    ADDRESS: 004BH
+  -------         MODULE        ?C?CSTPTR
+  C:04A4H         PUBLIC        ?C?CSTPTR
+  -------         ENDMOD        ?C?CSTPTR
 
-*** ERROR L118: REFERENCE MADE TO ERRONEOUS EXTERNAL
-    SYMBOL:  ?C?IMUL
-    MODULE:  lab2_1.obj (LAB2_1)
-    ADDRESS: 0051H
+  -------         MODULE        ?C?CSTOPTR
+  C:04B6H         PUBLIC        ?C?CSTOPTR
+  -------         ENDMOD        ?C?CSTOPTR
 
-*** ERROR L118: REFERENCE MADE TO ERRONEOUS EXTERNAL
-    SYMBOL:  ?C?IMUL
-    MODULE:  lab2_1.obj (LAB2_1)
-    ADDRESS: 007BH
+  -------         MODULE        ?C?ILDPTR
+  C:04D8H         PUBLIC        ?C?ILDPTR
+  -------         ENDMOD        ?C?ILDPTR
 
-*** ERROR L118: REFERENCE MADE TO ERRONEOUS EXTERNAL
-    SYMBOL:  ?C?IMUL
-    MODULE:  lab2_1.obj (LAB2_1)
-    ADDRESS: 00ACH
+  -------         MODULE        ?C?ILDOPTR
+  C:0503H         PUBLIC        ?C?ILDOPTR
+  -------         ENDMOD        ?C?ILDOPTR
 
-*** ERROR L120: CONTENT BELONGS TO ERRONEOUS SEGMENT
-    SEGMENT: ?PR?MAIN?LAB2_1
-    MODULE:  lab2_1.obj (LAB2_1)
+  -------         MODULE        ?C?ISTPTR
+  C:053BH         PUBLIC        ?C?ISTPTR
+  -------         ENDMOD        ?C?ISTPTR
 
-*** ERROR L120: CONTENT BELONGS TO ERRONEOUS SEGMENT
-BL51 BANKED LINKER/LOCATER V6.22                                                      11/21/2023  10:05:16  PAGE 5
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/29/2023  16:41:25  PAGE 5
 
 
-    SEGMENT: ?C_C51STARTUP
-    MODULE:  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+  -------         MODULE        ?C?ISTOPTR
+  C:055AH         PUBLIC        ?C?ISTOPTR
+  -------         ENDMOD        ?C?ISTOPTR
 
-*** ERROR L118: REFERENCE MADE TO ERRONEOUS EXTERNAL
-    SYMBOL:  ?C_START
-    MODULE:  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
-    ADDRESS: 000AH
+  -------         MODULE        ?C?PLDIIDATA
+  C:0587H         PUBLIC        ?C?PLDIIDATA
+  -------         ENDMOD        ?C?PLDIIDATA
 
-*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
-    SYMBOL:  ?C?IMUL
-    SEGMENT: ?C?LIB_CODE
+  -------         MODULE        ?C?CCASE
+  C:0597H         PUBLIC        ?C?CCASE
+  -------         ENDMOD        ?C?CCASE
 
-*** ERROR L120: CONTENT BELONGS TO ERRONEOUS SEGMENT
-    SEGMENT: ?C?LIB_CODE
-    MODULE:  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?IMUL)
+  -------         MODULE        ?C_XBP
+  D:0037H         PUBLIC        ?C_XBP
+  -------         ENDMOD        ?C_XBP
 
-*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
-    SYMBOL:  ?C?SIDIV
-    SEGMENT: ?C?LIB_CODE
+  -------         MODULE        ?C_PBP
+  D:0039H         PUBLIC        ?C_PBP
+  -------         ENDMOD        ?C_PBP
 
-*** ERROR L120: CONTENT BELONGS TO ERRONEOUS SEGMENT
-    SEGMENT: ?C?LIB_CODE
-    MODULE:  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?SIDIV)
+  -------         MODULE        PUTCHAR
+  C:076DH         PUBLIC        _PUTCHAR
+  -------         ENDMOD        PUTCHAR
 
-*** ERROR L118: REFERENCE MADE TO ERRONEOUS EXTERNAL
-    SYMBOL:  ?C?UIDIV
-    MODULE:  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?SIDIV)
-    ADDRESS: 001DH
-
-*** ERROR L118: REFERENCE MADE TO ERRONEOUS EXTERNAL
-    SYMBOL:  ?C?UIDIV
-    MODULE:  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?SIDIV)
-    ADDRESS: 0029H
-
-*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
-    SYMBOL:  ?C?UIDIV
-    SEGMENT: ?C?LIB_CODE
-
-*** ERROR L120: CONTENT BELONGS TO ERRONEOUS SEGMENT
-    SEGMENT: ?C?LIB_CODE
-    MODULE:  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?UIDIV)
-
-******************************************************************************
-* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 00D5H BYTE (10%) *
-******************************************************************************
-
-Program Size: data=19.0 xdata=2 code=385
-LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  28 ERROR(S)
+Program Size: data=58.1 xdata=0 code=1989
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

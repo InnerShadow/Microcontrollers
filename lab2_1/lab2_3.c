@@ -1,16 +1,18 @@
-#include <reg51.h>
+#include <reg52.h>
 #include <stdio.h>
 
-#include "fibonacci.c"
+//#include "fibonacci.c"
 
-extern unsigned int fibonacci(unsigned int n);
+extern unsigned int fibonacci(char n) reentrant;
 
 void main() {
-    unsigned int result;
+	
+    char result;
 
-    result = fibonacci(5);
+    result = fibonacci(7);
 	
     printf("Result: %u\n", result);
 
-    while (1);
+    while (1) {}
 }
+
