@@ -1,0 +1,47 @@
+A51 MACRO ASSEMBLER  MODUL-3                                                                          03/14/2023 11:55:25 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02b
+OBJECT MODULE PLACED IN A2pc.OBJ
+ASSEMBLER INVOKED BY: C:\Program Files\KEIL_5_953\C51\BIN\A51.EXE A2pc.a51 SET(SMALL) DEBUG XREF PAGEWIDTH(132) PAGELENGTH(900) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     $title  (Modul-3)
+                       2     $xref 
+                       3             NAME    IO_CHAR
+                       4     ; Процедура вывода символа (имя)
+                       5             PUBLIC  PUTCHAR
+                       6     ; Сегменты
+                       7     CHAR_ROUTINES SEGMENT CODE INBLOCK
+                       8     
+                       9     ;=======
+----                  10             RSEG  CHAR_ROUTINES
+                      11     ; Вывод символа в последовательный интерфейс.
+                      12     ; Символ расположен в аккумуляторе A.
+0000                  13     PUTCHAR:
+0000 3099FD           14             JNB     TI,$
+0003 C299             15             CLR     TI
+0005 F599             16             MOV     SBUF,A
+0007 22               17             RET
+                      18     
+                      19             END
+A51 MACRO ASSEMBLER  MODUL-3                                                                          03/14/2023 11:55:25 PAGE     2
+
+XREF SYMBOL TABLE LISTING
+---- ------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES / REFERENCES
+
+CHAR_ROUTINES. . .  C SEG    0008H       REL=INBLOCK   7# 10
+IO_CHAR. . . . . .  N NUMB   -----          3
+PUTCHAR. . . . . .  C ADDR   0000H   R   SEG=CHAR_ROUTINES   5 13#
+SBUF . . . . . . .  D ADDR   0099H   A      16
+TI . . . . . . . .  B ADDR   0098H.1 A      14 15
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

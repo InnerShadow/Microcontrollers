@@ -1,0 +1,26 @@
+Машинный язык  Mashina
+asm subb a,r7
+
+0119h + 256 (0100)
+
+Сложить два слова
+MOV      A,R7
+ADD      A,#0x00
+MOV      R7,A
+MOV      A,R6
+ADDC     A,#0x01
+MOV      R6,A
+
+Положительное число
+MOV      R5,#0x17
+MOV      A,R5
+RLC      A
+SUBB     A,ACC(0xE0)
+MOV      R4,A
+MOV      R7,#0xDD
+MOV      A,R7
+RLC      A
+SUBB     A,ACC(0xE0)
+MOV      R6,A
+
+5 +, 5 -

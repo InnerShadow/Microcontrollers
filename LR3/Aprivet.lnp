@@ -1,0 +1,9 @@
+"A0main.obj",
+"A1io.obj",
+"A2pc.obj" 
+TO "Aprivet" 
+PAGEWIDTH (132) 
+PAGELENGTH (900) 
+IXREF 
+CODE( 0X0000-0X03FF )
+XDATA( 0X0000-0X03FF )

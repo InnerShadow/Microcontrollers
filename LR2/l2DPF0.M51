@@ -1,0 +1,262 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        11/01/2023  12:36:17  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\PROGRAM FILES\KEIL_5_953\C51\BIN\BL51.EXE dpf0.obj, main0.obj TO l2DPF0 IXREF CODE (0X0000-0X0BFF) XDATA (0X0000-0X07
+>> FF)
+
+
+MEMORY MODEL: LARGE WITH FLOATING POINT ARITHMETIC
+
+
+INPUT MODULES INCLUDED:
+  dpf0.obj (DPF0)
+  main0.obj (MAIN0)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51FPL.LIB (?C?FPADD)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51FPL.LIB (?C?FPMUL)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51FPL.LIB (?C?FPDIV)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51FPL.LIB (?C?FCAST)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51FPL.LIB (SIN)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51FPL.LIB (?C?FPGETOPN)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51FPL.LIB (?C?CASTF)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51FPL.LIB (?C?FPSERIES)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51L.LIB (?C_STARTUP)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51L.LIB (?C?LNEG)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51L.LIB (?C?LLDXDATA)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51L.LIB (?C?LLDCODE)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51L.LIB (?C?LLDXDATA0)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51L.LIB (?C?LLDCODE0)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51L.LIB (?C?LSTXDATA)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51L.LIB (?C?LSTKXDATA)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51L.LIB (?C?OFFXADD)
+
+
+LINK MAP OF MODULE:  l2DPF0 (DPF0)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+                    0008H     0018H                  *** GAP ***
+            BIT     0020H.0   0000H.1   UNIT         _BIT_GROUP_
+                    0020H.1   0000H.7                *** GAP ***
+            IDATA   0021H     0001H     UNIT         ?STACK
+
+            * * * * * * *  X D A T A   M E M O R Y  * * * * * * *
+            XDATA   0000H     0603H     UNIT         ?XD?MAIN0
+            XDATA   0603H     0004H     UNIT         _XDATA_GROUP_
+            XDATA   0607H     0002H     UNIT         ?XD?FUNR_DPF?DPF0
+            XDATA   0609H     0001H     UNIT         ?XD?MAIN?MAIN0
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0439H     UNIT         ?C?LIB_CODE
+            CODE    043CH     01D1H     INBLOCK      ?PR?FUNR_DPF?DPF0
+            CODE    060DH     0188H     UNIT         ?PR?SIN?SIN
+            CODE    0795H     000CH     UNIT         ?C_C51STARTUP
+                    07A1H     005FH                  *** GAP ***
+            CODE    0800H     00ACH     INBLOCK      ?PR?MAIN?MAIN0
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/01/2023  12:36:17  PAGE 2
+
+
+
+
+OVERLAY MAP OF MODULE:   l2DPF0 (DPF0)
+
+
+SEGMENT                           BIT_GROUP          XDATA_GROUP
+  +--> CALLED SEGMENT          START    LENGTH     START    LENGTH
+------------------------------------------------------------------
+?C_C51STARTUP                  -----    -----      -----    -----
+  +--> ?PR?MAIN?MAIN0
+
+?PR?MAIN?MAIN0                 -----    -----      -----    -----
+  +--> ?PR?FUNR_DPF?DPF0
+
+?PR?FUNR_DPF?DPF0              -----    -----      -----    -----
+  +--> ?PR?SIN?SIN
+
+?PR?SIN?SIN                    0020H.0  0000H.1    0603H    0004H
+
+
+
+SYMBOL TABLE OF MODULE:  l2DPF0 (DPF0)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        DPF0
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:043CH         PUBLIC        FunR_DPF
+  -------         PROC          FUNR_DPF
+  -------         DO            
+  X:0607H         SYMBOL        k
+  X:0608H         SYMBOL        i
+  -------         ENDDO         
+  C:043CH         LINE#         10
+  C:043CH         LINE#         12
+  C:0452H         LINE#         13
+  C:047EH         LINE#         14
+  C:0494H         LINE#         15
+  C:0548H         LINE#         16
+  C:05FCH         LINE#         17
+  C:0604H         LINE#         18
+  C:060CH         LINE#         19
+  -------         ENDPROC       FUNR_DPF
+  -------         ENDMOD        DPF0
+
+  -------         MODULE        MAIN0
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  X:0000H         PUBLIC        nd2
+  X:0001H         PUBLIC        nm1
+  X:0002H         PUBLIC        SImag_out
+  X:0202H         PUBLIC        SReal_out
+  C:0800H         PUBLIC        main
+  X:0402H         PUBLIC        SReal
+  X:0602H         PUBLIC        n
+  -------         PROC          MAIN
+  -------         DO            
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/01/2023  12:36:17  PAGE 3
+
+
+  X:0609H         SYMBOL        i
+  -------         ENDDO         
+  C:0800H         LINE#         16
+  C:0800H         LINE#         18
+  C:0806H         LINE#         19
+  C:0813H         LINE#         21
+  C:0821H         LINE#         28
+  C:0831H         LINE#         30
+  C:084FH         LINE#         31
+  C:0859H         LINE#         32
+  C:085CH         LINE#         33
+  C:0874H         LINE#         34
+  C:0877H         LINE#         35
+  C:0881H         LINE#         36
+  C:088BH         LINE#         37
+  C:088EH         LINE#         39
+  C:08A6H         LINE#         40
+  C:08A9H         LINE#         41
+  C:08ABH         LINE#         42
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN0
+
+  -------         MODULE        ?C?FPADD
+  C:000AH         PUBLIC        ?C?FPADD
+  C:0006H         PUBLIC        ?C?FPSUB
+  -------         ENDMOD        ?C?FPADD
+
+  -------         MODULE        ?C?FPMUL
+  C:00FBH         PUBLIC        ?C?FPMUL
+  -------         ENDMOD        ?C?FPMUL
+
+  -------         MODULE        ?C?FPDIV
+  C:0204H         PUBLIC        ?C?FPDIV
+  -------         ENDMOD        ?C?FPDIV
+
+  -------         MODULE        ?C?FCAST
+  C:02ABH         PUBLIC        ?C?FCASTC
+  C:02A6H         PUBLIC        ?C?FCASTI
+  C:02A1H         PUBLIC        ?C?FCASTL
+  -------         ENDMOD        ?C?FCAST
+
+  -------         MODULE        SIN
+  C:0655H         PUBLIC        _COS
+  C:066BH         PUBLIC        _SIN
+  C:06A7H         PUBLIC        _TAN
+  -------         ENDMOD        SIN
+
+  -------         MODULE        ?C?CASTF
+  C:0329H         PUBLIC        ?C?CASTF
+  -------         ENDMOD        ?C?CASTF
+
+  -------         MODULE        ?C?LNEG
+  C:03ADH         PUBLIC        ?C?LNEG
+  -------         ENDMOD        ?C?LNEG
+
+  -------         MODULE        ?C?LLDXDATA
+  C:03BBH         PUBLIC        ?C?LLDXDATA
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/01/2023  12:36:17  PAGE 4
+
+
+  -------         ENDMOD        ?C?LLDXDATA
+
+  -------         MODULE        ?C?LLDCODE
+  C:03C7H         PUBLIC        ?C?LLDCODE
+  -------         ENDMOD        ?C?LLDCODE
+
+  -------         MODULE        ?C?LLDXDATA0
+  C:03D7H         PUBLIC        ?C?LLDXDATA0
+  -------         ENDMOD        ?C?LLDXDATA0
+
+  -------         MODULE        ?C?LLDCODE0
+  C:03E3H         PUBLIC        ?C?LLDCODE0
+  -------         ENDMOD        ?C?LLDCODE0
+
+  -------         MODULE        ?C?LSTXDATA
+  C:03F3H         PUBLIC        ?C?LSTXDATA
+  -------         ENDMOD        ?C?LSTXDATA
+
+  -------         MODULE        ?C?LSTKXDATA
+  C:03FFH         PUBLIC        ?C?LSTKXDATA
+  -------         ENDMOD        ?C?LSTKXDATA
+
+  -------         MODULE        ?C?OFFXADD
+  C:0430H         PUBLIC        ?C?OFFXADD
+  -------         ENDMOD        ?C?OFFXADD
+
+
+
+INTER-MODULE CROSS-REFERENCE LISTING
+------------------------------------
+
+
+NAME . . . . . . USAGE    MODULE NAMES
+--------------------------------------
+
+?C?CASTF . . . . CODE;    ?C?CASTF  SIN  
+?C?FCASTC. . . . CODE;    ?C?FCAST  DPF0  SIN  
+?C?FCASTI. . . . CODE;    ?C?FCAST  
+?C?FCASTL. . . . CODE;    ?C?FCAST  SIN  
+?C?FP2SERIES . . CODE;    ?C?FPSERIES  SIN  
+?C?FPADD . . . . CODE;    ?C?FPADD  ?C?FPSERIES  DPF0  SIN  
+?C?FPDIV . . . . CODE;    ?C?FPDIV  DPF0  SIN  
+?C?FPGETOPN2 . . CODE;    ?C?FPGETOPN  ?C?FPADD  ?C?FPDIV  ?C?FPMUL  
+?C?FPMUL . . . . CODE;    ?C?FPMUL  ?C?FPSERIES  DPF0  SIN  
+?C?FPNANRESULT . CODE;    ?C?FPGETOPN  ?C?FPADD  ?C?FPDIV  ?C?FPMUL  SIN  
+?C?FPOVERFLOW. . CODE;    ?C?FPGETOPN  ?C?FPADD  ?C?FPDIV  ?C?FPMUL  
+?C?FPRESULT. . . CODE;    ?C?FPGETOPN  ?C?FPADD  ?C?FPDIV  ?C?FPMUL  
+?C?FPRESULT2 . . CODE;    ?C?FPGETOPN  ?C?FPDIV  ?C?FPMUL  
+?C?FPSERIES. . . CODE;    ?C?FPSERIES  
+?C?FPSUB . . . . CODE;    ?C?FPADD  DPF0  
+?C?FPUNDERFLOW . CODE;    ?C?FPGETOPN  ?C?FPADD  ?C?FPDIV  ?C?FPMUL  
+?C?LLDCODE . . . CODE;    ?C?LLDCODE  ?C?FPSERIES  
+?C?LLDCODE0. . . CODE;    ?C?LLDCODE0  ?C?FPSERIES  
+?C?LLDXDATA. . . CODE;    ?C?LLDXDATA  DPF0  
+?C?LLDXDATA0 . . CODE;    ?C?LLDXDATA0  DPF0  SIN  
+?C?LNEG. . . . . CODE;    ?C?LNEG  ?C?CASTF  ?C?FCAST  
+?C?LSTKXDATA . . CODE;    ?C?LSTKXDATA  DPF0  MAIN0  
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/01/2023  12:36:17  PAGE 5
+
+
+?C?LSTXDATA. . . CODE;    ?C?LSTXDATA  DPF0  SIN  
+?C?OFFXADD . . . CODE;    ?C?OFFXADD  DPF0  MAIN0  
+?C_START . . . . CODE;    ** L51 GENERATED **  ?C_STARTUP  
+?C_STARTUP . . . CODE;    ?C_STARTUP  MAIN0  
+FUNR_DPF . . . . CODE;    DPF0  MAIN0  
+MAIN . . . . . . CODE;    MAIN0  
+N. . . . . . . . XDATA;   MAIN0  DPF0  
+ND2. . . . . . . XDATA;   MAIN0  DPF0  
+NM1. . . . . . . XDATA;   MAIN0  
+SIMAG_OUT. . . . XDATA;   MAIN0  DPF0  
+SREAL. . . . . . XDATA;   MAIN0  DPF0  
+SREAL_OUT. . . . XDATA;   MAIN0  DPF0  
+_COS . . . . . . CODE;    SIN  DPF0  
+_SIN . . . . . . CODE;    SIN  DPF0  
+_TAN . . . . . . CODE;    SIN  
+
+Program Size: data=9.1 xdata=1546 code=2125
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

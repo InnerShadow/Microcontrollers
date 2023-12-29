@@ -1,0 +1,311 @@
+C51 COMPILER V9.53.0.0   FACT_I                                                                        12/05/2023 09:47:51 PAGE 1   
+
+
+C51 COMPILER V9.53.0.0, COMPILATION OF MODULE FACT_I
+OBJECT MODULE PLACED IN Fact_i.OBJ
+COMPILER INVOKED BY: C:\Program Files\KEIL_5_953\C51\BIN\C51.EXE Fact_i.c ROM(SMALL) OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND COD
+                    -E SYMBOLS PAGEWIDTH(132) PAGELENGTH(999) TABS(2)
+
+line level    source
+
+   1          /* Монолитный вариант.                                  Пример 1
+   2             Пример нелокальных переходов. Вложенные комментарии. Условная компиляция.
+   3             Маленькая программа, вычисляющая факториалы.
+   4          // вложенные комментарии в IAR Systems, а здесь Keil
+   5             ! факториалы положительные - unsigned.
+   6          */
+   7          #pragma CODE
+   8          #pragma PAGELENGTH(999)
+   9          #pragma PAGEWIDTH(132)
+  10          
+  11          #define NoRecurs 0
+  12          #define Param 3
+  13          // ===============================================================
+  14          #if Param == 0
+              // ===== 0 вариант.
+              #error Ошибка №1, этот фрагмент ещё не написан!
+              /* . . . . . . . . . . . . . */
+              #elif Param == 1
+              // ===== 1 вариант.
+              #error Ошибка №2, этот фрагмент всё ещё не написан!
+              /* . . . . . . . . . . . . . */
+              #elif Param == 2
+              // ===== 2 вариант.
+              #error Ошибка №3, этот фрагмент врядли напишу!
+              /* . . . . . . . . . . . . . */
+              #elif Param == 3
+  27          // ===== 3 вариант. Нелокальные переходы.
+  28          #define CnstMyFunc 40320   /* 5040 40320 для факториала */
+  29          #pragma small              // явная модель памяти.
+  30          #include <setjmp.h>
+  31          #include <stdio.h>
+  32          #include <string.h>
+  33          
+  34          // ----- рабочие переменные
+  35          jmp_buf vJumper;
+  36          unsigned int iN; // unsigned
+  37          static char cResult[ 12 ];
+  38          static int iValCT, iC = 0;
+  39          
+  40          #if NoRecurs 
+              static int Fact( int iNum );
+              #else
+  43          static int Fact( int iNum ) reentrant;
+  44          #endif
+  45          void fSubroutine( void );
+  46          
+  47          // ===============================================================
+  48          void main( void ) {
+  49   1      /***** Подготовка к работе.
+  50   1         -включить прогрев; -вкл. ВЧ ген.; -подать высокое. */
+  51   1        iN = 666;
+  52   1        strcpy( cResult, "Start!" );
+  53   1        iValCT = setjmp( vJumper );
+  54   1      /* <<<<< Точка входа. Работа блока.
+  55   1         -30-40 мин прогрев на 5 градусов. */
+  56   1        if ( iValCT != 0 ) { // не первый вход!
+  57   2          iN = Fact( iValCT );
+  58   2          if ( iN >= CnstMyFunc ) {
+  59   3            strcpy( cResult, "Finish!" );
+  60   3            goto Lexit;
+  61   3          }
+  62   2        }
+  63   1        else iN = -1;
+  64   1        iN = sprintf( cResult, "N=%u i=%d", iN, iValCT ); // %d %u
+  65   1        fSubroutine();
+  66   1      /***** Завершение.
+  67   1        -снять высокое; выкл. ген.; -вентил. охл. 5 мин. */
+  68   1      Lexit:
+  69   1        while (1) {}
+  70   1      }
+  71          
+  72          // ===============================================================
+  73          // Вычисление факториала.
+  74          #if NoRecurs 
+              // Обычный расчет факториала в цикле.
+              int Fact( int iNum ) {
+                register int i, prod = 1;
+                if ( iNum < 0 ) return 0;
+                if ( iNum == 0 ) return 1;
+                for ( i = 1; i <= iNum; i++ )
+                  prod *= i;
+                return prod;
+              }
+              #else
+  85          // Рекурсивный расчет факториала.
+  86          int Fact( int iNum ) reentrant {
+  87   1        if ( iNum < 0 ) return 0;
+  88   1        if ( iNum == 0 ) return 1;
+  89   1        return  Fact( iNum - 1 )* iNum;
+  90   1      }
+  91          #endif
+  92          
+  93          // ===============================================================
+  94          // Вспомогательная функция.
+  95          /* В прерывании longjmp(...) */
+  96          void fSubroutine( void ) {
+  97   1      /* ... */
+  98   1        longjmp( vJumper, ++iC );
+  99   1      /* ... */
+ 100   1      }
+ 101          #else
+              // ===== 4 Последний вариант.
+              #message "Этот фрагмент до конца не написан!"
+              /* . . . . . . .
+                для IAR Systems
+                 . . . . . . . */
+              #endif
+C51 COMPILER V9.53.0.0   FACT_I                                                                        12/05/2023 09:47:51 PAGE 2   
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+             ; FUNCTION main (BEGIN)
+                                           ; SOURCE LINE # 48
+                                           ; SOURCE LINE # 51
+0000 750002      R     MOV     iN,#02H
+0003 75009A      R     MOV     iN+01H,#09AH
+                                           ; SOURCE LINE # 52
+0006 7800        R     MOV     R0,#LOW cResult
+0008 7C00        R     MOV     R4,#HIGH cResult
+000A 7D00              MOV     R5,#00H
+000C 7BFF              MOV     R3,#0FFH
+000E 7A00        R     MOV     R2,#HIGH ?SC_0
+0010 7900        R     MOV     R1,#LOW ?SC_0
+0012 1100        E     ACALL   ?C?STRCPY
+                                           ; SOURCE LINE # 53
+0014 7B00              MOV     R3,#00H
+0016 7A00        R     MOV     R2,#HIGH vJumper
+0018 7900        R     MOV     R1,#LOW vJumper
+001A 1100        E     ACALL   _setjmp
+001C 8E00        R     MOV     iValCT,R6
+001E 8F00        R     MOV     iValCT+01H,R7
+                                           ; SOURCE LINE # 56
+0020 E500        R     MOV     A,iValCT+01H
+0022 4500        R     ORL     A,iValCT
+0024 6024              JZ      ?C0001
+                                           ; SOURCE LINE # 57
+0026 1100        R     ACALL   _?Fact
+0028 8E00        R     MOV     iN,R6
+002A 8F00        R     MOV     iN+01H,R7
+                                           ; SOURCE LINE # 58
+002C E4                CLR     A
+002D FC                MOV     R4,A
+002E FD                MOV     R5,A
+002F 7B80              MOV     R3,#080H
+0031 7A9D              MOV     R2,#09DH
+0033 F9                MOV     R1,A
+0034 F8                MOV     R0,A
+0035 D3                SETB    C
+0036 1100        E     ACALL   ?C?SLCMP
+0038 5016              JNC     ?C0004
+                                           ; SOURCE LINE # 59
+003A 7800        R     MOV     R0,#LOW cResult
+003C 7C00        R     MOV     R4,#HIGH cResult
+003E 7D00              MOV     R5,#00H
+0040 7BFF              MOV     R3,#0FFH
+0042 7A00        R     MOV     R2,#HIGH ?SC_7
+0044 7900        R     MOV     R1,#LOW ?SC_7
+0046 1100        E     ACALL   ?C?STRCPY
+                                           ; SOURCE LINE # 60
+0048 8029              SJMP    ?C0005
+                                           ; SOURCE LINE # 61
+                                           ; SOURCE LINE # 62
+004A         ?C0001:
+                                           ; SOURCE LINE # 63
+004A 74FF              MOV     A,#0FFH
+004C F500        R     MOV     iN,A
+004E F500        R     MOV     iN+01H,A
+0050         ?C0004:
+                                           ; SOURCE LINE # 64
+0050 7500FF      E     MOV     ?_sprintf?BYTE+03H,#0FFH
+0053 750000      R     MOV     ?_sprintf?BYTE+04H,#HIGH ?SC_15
+0056 750000      R     MOV     ?_sprintf?BYTE+05H,#LOW ?SC_15
+0059 850000      E     MOV     ?_sprintf?BYTE+06H,iN
+005C 850000      E     MOV     ?_sprintf?BYTE+07H,iN+01H
+005F 850000      E     MOV     ?_sprintf?BYTE+08H,iValCT
+0062 850000      E     MOV     ?_sprintf?BYTE+09H,iValCT+01H
+0065 7B00              MOV     R3,#00H
+0067 7A00        R     MOV     R2,#HIGH cResult
+0069 7900        R     MOV     R1,#LOW cResult
+006B 1100        E     ACALL   _sprintf
+006D 8E00        R     MOV     iN,R6
+006F 8F00        R     MOV     iN+01H,R7
+                                           ; SOURCE LINE # 65
+0071 1100        R     ACALL   fSubroutine
+                                           ; SOURCE LINE # 68
+0073         Lexit:
+0073         ?C0005:
+                                           ; SOURCE LINE # 69
+0073 80FE              SJMP    ?C0005
+             ; FUNCTION main (END)
+
+             ; FUNCTION _?Fact (BEGIN)
+                                           ; SOURCE LINE # 86
+0000 1500        E     DEC     ?C_IBP
+0002 1500        E     DEC     ?C_IBP
+0004 A800        E     MOV     R0,?C_IBP
+0006 A606              MOV     @R0,AR6
+0008 08                INC     R0
+0009 A607              MOV     @R0,AR7
+                                           ; SOURCE LINE # 87
+000B A800        E     MOV     R0,?C_IBP
+000D E6                MOV     A,@R0
+000E FC                MOV     R4,A
+000F 08                INC     R0
+0010 E6                MOV     A,@R0
+0011 FD                MOV     R5,A
+0012 C3                CLR     C
+0013 EC                MOV     A,R4
+0014 6480              XRL     A,#080H
+0016 9480              SUBB    A,#080H
+0018 5005              JNC     ?C0008
+001A E4                CLR     A
+001B FE                MOV     R6,A
+001C FF                MOV     R7,A
+001D 8020              SJMP    ?C0009
+001F         ?C0008:
+                                           ; SOURCE LINE # 88
+001F ED                MOV     A,R5
+0020 4C                ORL     A,R4
+0021 7005              JNZ     ?C0010
+0023 FE                MOV     R6,A
+0024 7F01              MOV     R7,#01H
+0026 8017              SJMP    ?C0009
+0028         ?C0010:
+                                           ; SOURCE LINE # 89
+0028 A800        E     MOV     R0,?C_IBP
+002A 08                INC     R0
+002B E6                MOV     A,@R0
+002C 24FF              ADD     A,#0FFH
+002E FF                MOV     R7,A
+002F 18                DEC     R0
+0030 E6                MOV     A,@R0
+0031 34FF              ADDC    A,#0FFH
+0033 FE                MOV     R6,A
+0034 1100        R     ACALL   _?Fact
+0036 A800        E     MOV     R0,?C_IBP
+0038 E6                MOV     A,@R0
+0039 FC                MOV     R4,A
+003A 08                INC     R0
+003B E6                MOV     A,@R0
+003C FD                MOV     R5,A
+003D 1100        E     ACALL   ?C?IMUL
+                                           ; SOURCE LINE # 90
+003F         ?C0009:
+003F 0500        E     INC     ?C_IBP
+0041 0500        E     INC     ?C_IBP
+0043 22                RET     
+             ; FUNCTION _?Fact (END)
+
+             ; FUNCTION fSubroutine (BEGIN)
+                                           ; SOURCE LINE # 96
+                                           ; SOURCE LINE # 98
+0000 7B00              MOV     R3,#00H
+0002 7A00        R     MOV     R2,#HIGH vJumper
+0004 7900        R     MOV     R1,#LOW vJumper
+0006 0500        R     INC     iC+01H
+0008 E500        R     MOV     A,iC+01H
+000A 7002              JNZ     ?C0012
+000C 0500        R     INC     iC
+000E         ?C0012:
+000E FD                MOV     R5,A
+000F AC00        R     MOV     R4,iC
+0011 0100        E     AJMP    _longjmp
+             ; FUNCTION fSubroutine (END)
+
+C51 COMPILER V9.53.0.0   FACT_I                                                                        12/05/2023 09:47:51 PAGE 3   
+
+NAME                                    CLASS   MSPACE  TYPE    OFFSET  SIZE
+====                                    =====   ======  ====    ======  ====
+
+
+_?Fact . . . . . . . . . . . . . . . .  STATIC   CODE   PROC     0000H  -----
+  iNum . . . . . . . . . . . . . . . .  AUTO     IDATA  INT      0000H  2
+_sprintf . . . . . . . . . . . . . . .  EXTERN   CODE   PROC     -----  -----
+size_t . . . . . . . . . . . . . . . .  TYPEDEF  -----  U_INT    -----  2
+_setjmp. . . . . . . . . . . . . . . .  EXTERN   CODE   PROC     -----  -----
+fSubroutine. . . . . . . . . . . . . .  PUBLIC   CODE   PROC     0000H  -----
+iValCT . . . . . . . . . . . . . . . .  STATIC   DATA   INT      0000H  2
+main . . . . . . . . . . . . . . . . .  PUBLIC   CODE   PROC     0000H  -----
+  Lexit. . . . . . . . . . . . . . . .  LABEL    CODE   LABEL    -----  -----
+iC . . . . . . . . . . . . . . . . . .  STATIC   DATA   INT      0002H  2
+iN . . . . . . . . . . . . . . . . . .  PUBLIC   DATA   U_INT    0004H  2
+cResult. . . . . . . . . . . . . . . .  STATIC   DATA   ARRAY    0006H  12
+jmp_buf. . . . . . . . . . . . . . . .  TYPEDEF  -----  ARRAY    -----  7
+vJumper. . . . . . . . . . . . . . . .  PUBLIC   DATA   ARRAY    0012H  7
+_longjmp . . . . . . . . . . . . . . .  EXTERN   CODE   PROC     -----  -----
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    204    ----
+   CONSTANT SIZE    =     25    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     25    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

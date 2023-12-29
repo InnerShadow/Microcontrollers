@@ -1,0 +1,103 @@
+C51 COMPILER V9.53.0.0   PRIVET                                                                        03/10/2023 14:19:35 PAGE 1   
+
+
+C51 COMPILER V9.53.0.0, COMPILATION OF MODULE PRIVET
+OBJECT MODULE PLACED IN Privet.OBJ
+COMPILER INVOKED BY: C:\Program Files\KEIL_5_953\C51\BIN\C51.EXE Privet.c ROM(SMALL) OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND COD
+                    -E SYMBOLS PAGEWIDTH(132) PAGELENGTH(900) TABS(2)
+
+line level    source
+
+   1          // Из HELLO.C
+   2          // Пример быстрого старта и Приветствие
+   3          ///////////////////////////////////////
+   4          #pragma noco
+   5          #include <REG51.H> // Объявления РСФ для 8051
+   6          #include <stdio.h> // Прототипы функций системы вода-вывода
+   7          
+   8          #ifdef MONITOR51                 // Отладка с Monitor-51
+  11          
+  12          // Главная функция Cи. Выполнение программы начинается
+  13          // здесь после инициализации стека.
+  14          ///////////////////////////////////
+  15          void main (void) {
+  16   1      /*------------------------------------------------
+  17   1      Установить последовательный порт для 1201 бод при 12 МГц.
+  18   1      ------------------------------------------------*/
+  19   1      #ifndef MONITOR51
+  20   1        SCON  = 0x50;   /* SCON: режим 1, 8-bit UART, enable rcvr     */
+  21   1        TMOD |= 0x20;   /* TMOD: таймер 1, режим 2, 8-bit меандр      */
+  22   1        TH1   = 249;    /* TH1:  значение для 1201 бод при 12MHz      */
+  23   1        TR1   = 1;      /* TR1:  запустить таймер 1                   */
+  24   1        TI    = 1;      /* TI:   установить TI, UART готов к передаче */
+  25   1      #endif
+  26   1      
+  27   1      /*------------------------------------------------
+  28   1      Обратите внимание на то, что встроенная программа никогда не выходит
+  29   1      (потому что нет никакой операционной системы, чтобы к ней вернуться).
+  30   1      Это должно зациклиться и выполняться навсегда.  
+  31   1      ------------------------------------------------*/
+  32   1        while (1) {
+  33   2          P1 ^= 0x01; /* Переключать P1.0 каждый раз при печати */
+  34   2          printf ( "Доброго всем здоровья!\n" ); /* Печать приветствия */
+  35   2        }
+  36   1      }
+C51 COMPILER V9.53.0.0   PRIVET                                                                        03/10/2023 14:19:35 PAGE 2   
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+             ; FUNCTION main (BEGIN)
+                                           ; SOURCE LINE # 15
+                                           ; SOURCE LINE # 20
+0000 759850            MOV     SCON,#050H
+                                           ; SOURCE LINE # 21
+0003 438920            ORL     TMOD,#020H
+                                           ; SOURCE LINE # 22
+0006 758DF9            MOV     TH1,#0F9H
+                                           ; SOURCE LINE # 23
+0009 D28E              SETB    TR1
+                                           ; SOURCE LINE # 24
+000B D299              SETB    TI
+000D         ?C0001:
+                                           ; SOURCE LINE # 32
+                                           ; SOURCE LINE # 33
+000D 639001            XRL     P1,#01H
+                                           ; SOURCE LINE # 34
+0010 7BFF              MOV     R3,#0FFH
+0012 7A00        R     MOV     R2,#HIGH ?SC_0
+0014 7900        R     MOV     R1,#LOW ?SC_0
+0016 1100        E     ACALL   _printf
+                                           ; SOURCE LINE # 35
+0018 80F3              SJMP    ?C0001
+             ; FUNCTION main (END)
+
+C51 COMPILER V9.53.0.0   PRIVET                                                                        03/10/2023 14:19:35 PAGE 3   
+
+NAME                                    CLASS   MSPACE  TYPE    OFFSET  SIZE
+====                                    =====   ======  ====    ======  ====
+
+
+P1 . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0090H  1
+size_t . . . . . . . . . . . . . . . .  TYPEDEF  -----  U_INT    -----  2
+_printf. . . . . . . . . . . . . . . .  EXTERN   CODE   PROC     -----  -----
+TI . . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      0099H  1
+main . . . . . . . . . . . . . . . . .  PUBLIC   CODE   PROC     0000H  -----
+SCON . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0098H  1
+TMOD . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0089H  1
+TH1. . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   008DH  1
+TR1. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      008EH  1
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     26    ----
+   CONSTANT SIZE    =     24    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

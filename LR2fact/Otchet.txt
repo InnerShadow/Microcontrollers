@@ -1,0 +1,8 @@
+Факториал рекурсивный
+=== int 5040
+Program Size: data=59.1 xdata=0 code=1975
+eval states = 0x00004A10 18960
+
+=== unsigned int 40320
+Program Size: data=59.1 xdata=0 code=1998
+eval states = 0x00006242 25154

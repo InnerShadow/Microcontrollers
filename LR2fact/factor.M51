@@ -1,0 +1,307 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                                    12/05/2023  09:47:53  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\PROGRAM FILES\KEIL_5_953\C51\BIN\BL51.EXE STARTUP.obj, Fact_i.obj TO factor PAGEWIDTH (132) PAGELENGTH (999) IXREF CODE (0X0000-0
+>> X07FF) XDATA (0X0000-0X07FF)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  STARTUP.obj (?C_STARTUP)
+  Fact_i.obj (FACT_I)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51S.LIB (?C_INIT)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51S.LIB (?C?IMUL)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51S.LIB (?C?SLCMP)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51S.LIB (?C_IBP)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51S.LIB (PRINTF)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51S.LIB (?C?STRCPY)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51S.LIB (SETJMP)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51S.LIB (?C?CLDPTR)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51S.LIB (?C?CLDOPTR)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51S.LIB (?C?CSTPTR)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51S.LIB (?C?CSTOPTR)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51S.LIB (?C?ILDPTR)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51S.LIB (?C?ILDOPTR)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51S.LIB (?C?ISTPTR)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51S.LIB (?C?ISTOPTR)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51S.LIB (?C?PLDIIDATA)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51S.LIB (?C?CCASE)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51S.LIB (?C_XBP)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51S.LIB (?C_PBP)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51S.LIB (PUTCHAR)
+
+
+LINK MAP OF MODULE:  factor (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0014H     UNIT         _DATA_GROUP_
+            DATA    001CH     0004H     UNIT         ?C?LIB_DATA
+            BIT     0020H.0   0001H.1   UNIT         _BIT_GROUP_
+                    0021H.1   0000H.7                *** GAP ***
+            DATA    0022H     0019H     UNIT         ?DT?FACT_I
+            IDATA   003BH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     035CH     UNIT         ?PR?PRINTF?PRINTF
+            CODE    035FH     0270H     UNIT         ?C?LIB_CODE
+            CODE    05CFH     008FH     UNIT         ?C_C51STARTUP
+            CODE    065EH     0075H     INBLOCK      ?PR?MAIN?FACT_I
+            CODE    06D3H     005FH     UNIT         ?PR?SETJMP?SETJMP
+            CODE    0732H     0044H     INBLOCK      ?PR?_?FACT?FACT_I
+            CODE    0776H     0027H     UNIT         ?PR?PUTCHAR?PUTCHAR
+            CODE    079DH     0019H     UNIT         ?CO?FACT_I
+            CODE    07B6H     0013H     INBLOCK      ?PR?FSUBROUTINE?FACT_I
+            CODE    07C9H     0005H     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   factor (?C_STARTUP)
+
+
+SEGMENT                           BIT_GROUP          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH     START    LENGTH
+------------------------------------------------------------------
+?C_C51STARTUP                  -----    -----      -----    -----
+  +--> ?PR?MAIN?FACT_I
+  +--> ?C_INITSEG
+
+?PR?MAIN?FACT_I                -----    -----      -----    -----
+  +--> ?CO?FACT_I
+  +--> ?PR?SETJMP?SETJMP
+  +--> ?PR?_?FACT?FACT_I
+  +--> ?PR?PRINTF?PRINTF
+  +--> ?PR?FSUBROUTINE?FACT_I
+
+?PR?PRINTF?PRINTF              0020H.0  0001H.1    0008H    0014H
+  +--> ?PR?PUTCHAR?PUTCHAR
+
+?PR?FSUBROUTINE?FACT_I         -----    -----      -----    -----
+  +--> ?PR?SETJMP?SETJMP
+
+
+
+SYMBOL TABLE OF MODULE:  factor (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:05CFH         SEGMENT       ?C_C51STARTUP
+  I:003BH         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0001H         SYMBOL        IBPSTACK
+  N:0080H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:05D2H         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:05CFH         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:05CFH         LINE#         133
+  C:05D1H         LINE#         134
+  C:05D2H         LINE#         135
+  C:05D3H         LINE#         136
+  C:05D5H         LINE#         170
+  C:05D8H         LINE#         185
+  C:05DBH         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        FACT_I
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:0732H         SYMBOL        _?Fact
+  C:07B6H         PUBLIC        fSubroutine
+  D:0022H         SYMBOL        iValCT
+  C:065EH         PUBLIC        main
+  D:0024H         SYMBOL        iC
+  D:0026H         PUBLIC        iN
+  D:0028H         SYMBOL        cResult
+  D:0034H         PUBLIC        vJumper
+  -------         PROC          MAIN
+  -------         DO            
+  C:06D1H         SYMBOL        Lexit
+  -------         ENDDO         
+  C:065EH         LINE#         48
+  C:065EH         LINE#         51
+  C:0664H         LINE#         52
+  C:0672H         LINE#         53
+  C:067EH         LINE#         56
+  C:0684H         LINE#         57
+  C:068AH         LINE#         58
+  C:0698H         LINE#         59
+  C:06A6H         LINE#         60
+  C:06A8H         LINE#         61
+  C:06A8H         LINE#         62
+  C:06A8H         LINE#         63
+  C:06AEH         LINE#         64
+  C:06CFH         LINE#         65
+  C:06D1H         LINE#         68
+  C:06D1H         LINE#         69
+  -------         ENDPROC       MAIN
+  -------         PROC          _?FACT
+  i:0000H         SYMBOL        iNum
+  C:0732H         LINE#         86
+  C:073DH         LINE#         87
+  C:0751H         LINE#         88
+  C:075AH         LINE#         89
+  C:0771H         LINE#         90
+  -------         ENDPROC       _?FACT
+  -------         PROC          FSUBROUTINE
+  C:07B6H         LINE#         96
+  C:07B6H         LINE#         98
+  -------         ENDPROC       FSUBROUTINE
+  -------         ENDMOD        FACT_I
+
+  -------         MODULE        ?C?IMUL
+  C:035FH         PUBLIC        ?C?IMUL
+  -------         ENDMOD        ?C?IMUL
+
+  -------         MODULE        ?C?SLCMP
+  C:0371H         PUBLIC        ?C?SLCMP
+  -------         ENDMOD        ?C?SLCMP
+
+  -------         MODULE        ?C_IBP
+  D:001CH         PUBLIC        ?C_IBP
+  -------         ENDMOD        ?C_IBP
+
+  -------         MODULE        PRINTF
+  D:0008H         PUBLIC        ?_PRINTF517?BYTE
+  D:0008H         PUBLIC        ?_PRINTF?BYTE
+  D:0008H         PUBLIC        ?_SPRINTF517?BYTE
+  D:0008H         PUBLIC        ?_SPRINTF?BYTE
+  C:0065H         PUBLIC        _PRINTF
+  C:0065H         PUBLIC        _PRINTF517
+  C:005FH         PUBLIC        _SPRINTF
+  C:005FH         PUBLIC        _SPRINTF517
+  -------         ENDMOD        PRINTF
+
+  -------         MODULE        ?C?STRCPY
+  C:0453H         PUBLIC        ?C?STRCPY
+  -------         ENDMOD        ?C?STRCPY
+
+  -------         MODULE        SETJMP
+  C:0704H         PUBLIC        _LONGJMP
+  C:06D3H         PUBLIC        _SETJMP
+  -------         ENDMOD        SETJMP
+
+  -------         MODULE        ?C?CLDPTR
+  C:0470H         PUBLIC        ?C?CLDPTR
+  -------         ENDMOD        ?C?CLDPTR
+
+  -------         MODULE        ?C?CLDOPTR
+  C:0489H         PUBLIC        ?C?CLDOPTR
+  -------         ENDMOD        ?C?CLDOPTR
+
+  -------         MODULE        ?C?CSTPTR
+  C:04B6H         PUBLIC        ?C?CSTPTR
+  -------         ENDMOD        ?C?CSTPTR
+
+  -------         MODULE        ?C?CSTOPTR
+  C:04C8H         PUBLIC        ?C?CSTOPTR
+  -------         ENDMOD        ?C?CSTOPTR
+
+  -------         MODULE        ?C?ILDPTR
+  C:04EAH         PUBLIC        ?C?ILDPTR
+  -------         ENDMOD        ?C?ILDPTR
+
+  -------         MODULE        ?C?ILDOPTR
+  C:0515H         PUBLIC        ?C?ILDOPTR
+  -------         ENDMOD        ?C?ILDOPTR
+
+  -------         MODULE        ?C?ISTPTR
+  C:054DH         PUBLIC        ?C?ISTPTR
+  -------         ENDMOD        ?C?ISTPTR
+
+  -------         MODULE        ?C?ISTOPTR
+  C:056CH         PUBLIC        ?C?ISTOPTR
+  -------         ENDMOD        ?C?ISTOPTR
+
+  -------         MODULE        ?C?PLDIIDATA
+  C:0599H         PUBLIC        ?C?PLDIIDATA
+  -------         ENDMOD        ?C?PLDIIDATA
+
+  -------         MODULE        ?C?CCASE
+  C:05A9H         PUBLIC        ?C?CCASE
+  -------         ENDMOD        ?C?CCASE
+
+  -------         MODULE        ?C_XBP
+  D:001DH         PUBLIC        ?C_XBP
+  -------         ENDMOD        ?C_XBP
+
+  -------         MODULE        ?C_PBP
+  D:001FH         PUBLIC        ?C_PBP
+  -------         ENDMOD        ?C_PBP
+
+  -------         MODULE        PUTCHAR
+  C:0776H         PUBLIC        _PUTCHAR
+  -------         ENDMOD        PUTCHAR
+
+
+
+INTER-MODULE CROSS-REFERENCE LISTING
+------------------------------------
+
+
+NAME . . . . . . . USAGE    MODULE NAMES
+----------------------------------------
+
+?C?CCASE . . . . . CODE;    ?C?CCASE  PRINTF  
+?C?CLDOPTR . . . . CODE;    ?C?CLDOPTR  PRINTF  SETJMP  
+?C?CLDPTR. . . . . CODE;    ?C?CLDPTR  PRINTF  
+?C?CSTOPTR . . . . CODE;    ?C?CSTOPTR  SETJMP  
+?C?CSTPTR. . . . . CODE;    ?C?CSTPTR  PRINTF  
+?C?ILDOPTR . . . . CODE;    ?C?ILDOPTR  SETJMP  
+?C?ILDPTR. . . . . CODE;    ?C?ILDPTR  SETJMP  
+?C?IMUL. . . . . . CODE;    ?C?IMUL  FACT_I  
+?C?ISTOPTR . . . . CODE;    ?C?ISTOPTR  SETJMP  
+?C?ISTPTR. . . . . CODE;    ?C?ISTPTR  SETJMP  
+?C?PLDIIDATA . . . CODE;    ?C?PLDIIDATA  PRINTF  
+?C?SLCMP . . . . . CODE;    ?C?SLCMP  FACT_I  
+?C?STRCPY. . . . . CODE;    ?C?STRCPY  FACT_I  
+?C_IBP . . . . . . DATA;    ?C_IBP  ?C_STARTUP  FACT_I  SETJMP  
+?C_INITSEGSTART. . CODE;    ** L51 GENERATED **  
+?C_PBP . . . . . . DATA;    ?C_PBP  SETJMP  
+?C_START . . . . . CODE;    ?C_INIT  ?C_STARTUP  
+?C_STARTUP . . . . CODE;    ?C_STARTUP  FACT_I  
+?C_XBP . . . . . . DATA;    ?C_XBP  SETJMP  
+?_PRINTF517?BYTE . DATA;    PRINTF  
+?_PRINTF?BYTE. . . DATA;    PRINTF  
+?_SPRINTF517?BYTE. DATA;    PRINTF  
+?_SPRINTF?BYTE . . DATA;    PRINTF  FACT_I  
+FSUBROUTINE. . . . CODE;    FACT_I  
+IN . . . . . . . . DATA;    FACT_I  
+MAIN . . . . . . . CODE;    FACT_I  ?C_INIT  
+VJUMPER. . . . . . DATA;    FACT_I  
+_?FACT . . . . . . CODE;    FACT_I  
+_LONGJMP . . . . . CODE;    SETJMP  FACT_I  
+_PRINTF. . . . . . CODE;    PRINTF  
+_PRINTF517 . . . . CODE;    PRINTF  
+_PUTCHAR . . . . . CODE;    PUTCHAR  PRINTF  
+_SETJMP. . . . . . CODE;    SETJMP  FACT_I  
+_SPRINTF . . . . . CODE;    PRINTF  FACT_I  
+_SPRINTF517. . . . CODE;    PRINTF  
+
+Program Size: data=59.1 xdata=0 code=1998
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,315 @@
+C51 COMPILER V9.53.0.0   HELLON                                                                        03/31/2023 11:19:56 PAGE 1   
+
+
+C51 COMPILER V9.53.0.0, COMPILATION OF MODULE HELLON
+OBJECT MODULE PLACED IN HELLOn.OBJ
+COMPILER INVOKED BY: C:\Program Files\KEIL_5_953\C51\BIN\C51.EXE HELLOn.C COMPACT ROM(SMALL) OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEX
+                    -TEND CODE SYMBOLS PAGEWIDTH(132) PAGELENGTH(900) TABS(2)
+
+line level    source
+
+   1          /*------------------------------------------------------------------------------
+   2          HELLO.C Пример быстрого старта
+   3          Печать приветствия. Структуры данных (темп. влажн. кисл.)
+   4          ------------------------------------------------------------------------------*/
+   5          //#pragma small
+   6          #pragma noco
+   7          #pragma code
+   8          #include <REG51.H> // Объявления РСФ для 8051
+   9          #include <stdio.h> // Прототипы функций системы вода-вывода
+  10          
+  11          #ifdef MONITOR51                 // Отладка с Monitor-51
+  14          
+  15          static const char * Am[]= { "не явился",
+  16            "один",
+  17            "два",
+  18            "три",
+  19            "четыре",
+  20            "пять",
+  21            "шесть",
+  22            "семь",
+  23            "восемь",
+  24            "девять",
+  25            "десять",
+  26            "не допущен",
+  27            "осв.",
+  28            "н/у",
+  29            "ноль",
+  30            "болен",
+  31            "пропал" };
+  32          static char ** pAm[]= { Am+10,  Am+9, Am+8, Am+7, Am+6, Am+5, Am+4,
+  33            Am+12, Am+3, Am+2, Am, Am+11, Am+1, Am+13, Am+14, Am+15, Am+16 };
+  34          // Хорошие плохо удовлетворительно разгильдяи
+  35          static char *** ppAm[]= { pAm, pAm+8, pAm+3, pAm+11 };
+  36          static char **** pppAm = ppAm;
+  37          
+  38          /*------------------------------------------------
+  39          Главная функция main C-программы. Программа начинает
+  40          работу здесь после инициализации стека.
+  41          ------------------------------------------------*/
+  42          void main (void) {
+  43   1      
+  44   1      /*------------------------------------------------
+  45   1      Настройка последовательного порта для 2403 бод при 12 MHz.
+  46   1      ------------------------------------------------*/
+  47   1      #ifndef MONITOR51
+  48   1        SCON  = 0x50;  /* SCON: режим 1, 8-bit UART, enable rcvr     */
+  49   1        TMOD |= 0x20;  /* TMOD: таймер 1, режим 2, 8-bit меандр      */
+  50   1        TH1   = 243;   /* TH1:  значение для 2403 бод при 12 MHz     */
+  51   1        TR1   = 1;     /* TR1:  запустить таймер 1                   */
+  52   1        TI    = 1;     /* TI:   установить TI, UART готов к передаче */
+  53   1      #endif
+  54   1        ( *printf )( "Операция: %c\n", *( Am[4]+ 3 )); 
+  55   1        printf ( "        : %c\n", *( *( Am + 4 )+ 4 )); 
+  56   1        printf ( "Теперь буква: %c\n", *( *Am + 3 )); 
+  57   1        
+  58   1        ( *printf )( "1-я экзаменационная оценка: %s\n", ***++pppAm ); 
+  59   1        printf ( "2-я экзаменационная оценка: %s\n", ***--pppAm ); 
+  60   1        printf ( "3-я экзаменационная оценка: %s\n", *pppAm[2][1] ); 
+  61   1        printf ( "4-я экзаменационная оценка: %s\n", pppAm[3][1][0] ); 
+  62   1      
+  63   1      /*------------------------------------------------
+  64   1      Обратите внимание на то, что встроенная программа никогда не выходит
+  65   1      (потому что нет никакой операционной системы, чтобы к ней вернуться).
+  66   1      Это должно зациклиться и выполняться навсегда.  
+  67   1      ------------------------------------------------*/
+  68   1        while (1) {
+  69   2          P1 ^= 0x01; /* Переключать P1.0 каждый раз при печати */
+  70   2          printf ( "Доброго всем здоровья\n" ); /* Печать приветствия */
+  71   2        }
+  72   1      }
+C51 COMPILER V9.53.0.0   HELLON                                                                        03/31/2023 11:19:56 PAGE 2   
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+             ; FUNCTION main (BEGIN)
+                                           ; SOURCE LINE # 42
+                                           ; SOURCE LINE # 48
+0000 759850            MOV     SCON,#050H
+                                           ; SOURCE LINE # 49
+0003 438920            ORL     TMOD,#020H
+                                           ; SOURCE LINE # 50
+0006 758DF3            MOV     TH1,#0F3H
+                                           ; SOURCE LINE # 51
+0009 D28E              SETB    TR1
+                                           ; SOURCE LINE # 52
+000B D299              SETB    TI
+                                           ; SOURCE LINE # 54
+000D 7800        R     MOV     R0,#LOW Am+0CH
+000F E2                MOVX    A,@R0
+0010 FB                MOV     R3,A
+0011 08                INC     R0
+0012 E2                MOVX    A,@R0
+0013 FA                MOV     R2,A
+0014 08                INC     R0
+0015 E2                MOVX    A,@R0
+0016 F9                MOV     R1,A
+0017 900003            MOV     DPTR,#03H
+001A 1100        E     ACALL   ?C?CLDOPTR
+001C 7800        E     MOV     R0,#LOW ?_printf?BYTE+03H
+001E F2                MOVX    @R0,A
+001F 7BFF              MOV     R3,#0FFH
+0021 7A00        R     MOV     R2,#HIGH ?SC_105
+0023 7900        R     MOV     R1,#LOW ?SC_105
+0025 1100        E     ACALL   _printf
+                                           ; SOURCE LINE # 55
+0027 7800        R     MOV     R0,#LOW Am+0CH
+0029 E2                MOVX    A,@R0
+002A FB                MOV     R3,A
+002B 08                INC     R0
+002C E2                MOVX    A,@R0
+002D FA                MOV     R2,A
+002E 08                INC     R0
+002F E2                MOVX    A,@R0
+0030 F9                MOV     R1,A
+0031 900004            MOV     DPTR,#04H
+0034 1100        E     ACALL   ?C?CLDOPTR
+0036 7800        E     MOV     R0,#LOW ?_printf?BYTE+03H
+0038 F2                MOVX    @R0,A
+0039 7BFF              MOV     R3,#0FFH
+003B 7A00        R     MOV     R2,#HIGH ?SC_119
+003D 7900        R     MOV     R1,#LOW ?SC_119
+003F 1100        E     ACALL   _printf
+                                           ; SOURCE LINE # 56
+0041 7800        R     MOV     R0,#LOW Am
+0043 E2                MOVX    A,@R0
+0044 FB                MOV     R3,A
+0045 08                INC     R0
+0046 E2                MOVX    A,@R0
+0047 FA                MOV     R2,A
+0048 08                INC     R0
+0049 E2                MOVX    A,@R0
+004A F9                MOV     R1,A
+004B 900003            MOV     DPTR,#03H
+004E 1100        E     ACALL   ?C?CLDOPTR
+0050 7800        E     MOV     R0,#LOW ?_printf?BYTE+03H
+0052 F2                MOVX    @R0,A
+0053 7BFF              MOV     R3,#0FFH
+0055 7A00        R     MOV     R2,#HIGH ?SC_133
+0057 7900        R     MOV     R1,#LOW ?SC_133
+0059 1100        E     ACALL   _printf
+                                           ; SOURCE LINE # 58
+005B 7800        R     MOV     R0,#LOW pppAm
+005D E2                MOVX    A,@R0
+005E FB                MOV     R3,A
+005F 08                INC     R0
+0060 08                INC     R0
+0061 E2                MOVX    A,@R0
+0062 2403              ADD     A,#03H
+0064 F9                MOV     R1,A
+0065 F2                MOVX    @R0,A
+0066 18                DEC     R0
+0067 E2                MOVX    A,@R0
+0068 3400              ADDC    A,#00H
+006A FA                MOV     R2,A
+006B F2                MOVX    @R0,A
+006C 1100        E     ACALL   ?C?PLDPTR
+006E 1100        E     ACALL   ?C?PLDPTR
+0070 1100        E     ACALL   ?C?PLDPTR
+0072 7800        E     MOV     R0,#LOW ?_printf?BYTE+03H
+0074 EB                MOV     A,R3
+0075 F2                MOVX    @R0,A
+0076 08                INC     R0
+0077 EA                MOV     A,R2
+0078 F2                MOVX    @R0,A
+0079 08                INC     R0
+007A E9                MOV     A,R1
+007B F2                MOVX    @R0,A
+007C 7BFF              MOV     R3,#0FFH
+007E 7A00        R     MOV     R2,#HIGH ?SC_151
+0080 7900        R     MOV     R1,#LOW ?SC_151
+0082 1100        E     ACALL   _printf
+                                           ; SOURCE LINE # 59
+0084 7800        R     MOV     R0,#LOW pppAm
+0086 E2                MOVX    A,@R0
+0087 FB                MOV     R3,A
+0088 08                INC     R0
+0089 08                INC     R0
+008A E2                MOVX    A,@R0
+008B 24FD              ADD     A,#0FDH
+008D F9                MOV     R1,A
+008E F2                MOVX    @R0,A
+008F 18                DEC     R0
+0090 E2                MOVX    A,@R0
+0091 34FF              ADDC    A,#0FFH
+0093 FA                MOV     R2,A
+0094 F2                MOVX    @R0,A
+0095 1100        E     ACALL   ?C?PLDPTR
+0097 1100        E     ACALL   ?C?PLDPTR
+0099 1100        E     ACALL   ?C?PLDPTR
+009B 7800        E     MOV     R0,#LOW ?_printf?BYTE+03H
+009D EB                MOV     A,R3
+009E F2                MOVX    @R0,A
+009F 08                INC     R0
+00A0 EA                MOV     A,R2
+00A1 F2                MOVX    @R0,A
+00A2 08                INC     R0
+00A3 E9                MOV     A,R1
+00A4 F2                MOVX    @R0,A
+00A5 7BFF              MOV     R3,#0FFH
+00A7 7A00        R     MOV     R2,#HIGH ?SC_182
+00A9 7900        R     MOV     R1,#LOW ?SC_182
+00AB 1100        E     ACALL   _printf
+                                           ; SOURCE LINE # 60
+00AD 7800        R     MOV     R0,#LOW pppAm
+00AF E2                MOVX    A,@R0
+00B0 FB                MOV     R3,A
+00B1 08                INC     R0
+00B2 E2                MOVX    A,@R0
+00B3 FA                MOV     R2,A
+00B4 08                INC     R0
+00B5 E2                MOVX    A,@R0
+00B6 F9                MOV     R1,A
+00B7 900006            MOV     DPTR,#06H
+00BA 1100        E     ACALL   ?C?PLDOPTR
+00BC 900003            MOV     DPTR,#03H
+00BF 1100        E     ACALL   ?C?PLDOPTR
+00C1 1100        E     ACALL   ?C?PLDPTR
+00C3 7800        E     MOV     R0,#LOW ?_printf?BYTE+03H
+00C5 EB                MOV     A,R3
+00C6 F2                MOVX    @R0,A
+00C7 08                INC     R0
+00C8 EA                MOV     A,R2
+00C9 F2                MOVX    @R0,A
+00CA 08                INC     R0
+00CB E9                MOV     A,R1
+00CC F2                MOVX    @R0,A
+00CD 7BFF              MOV     R3,#0FFH
+00CF 7A00        R     MOV     R2,#HIGH ?SC_213
+00D1 7900        R     MOV     R1,#LOW ?SC_213
+00D3 1100        E     ACALL   _printf
+                                           ; SOURCE LINE # 61
+00D5 7800        R     MOV     R0,#LOW pppAm
+00D7 E2                MOVX    A,@R0
+00D8 FB                MOV     R3,A
+00D9 08                INC     R0
+00DA E2                MOVX    A,@R0
+00DB FA                MOV     R2,A
+00DC 08                INC     R0
+00DD E2                MOVX    A,@R0
+00DE F9                MOV     R1,A
+00DF 900009            MOV     DPTR,#09H
+00E2 1100        E     ACALL   ?C?PLDOPTR
+00E4 900003            MOV     DPTR,#03H
+00E7 1100        E     ACALL   ?C?PLDOPTR
+00E9 1100        E     ACALL   ?C?PLDPTR
+00EB 7800        E     MOV     R0,#LOW ?_printf?BYTE+03H
+00ED EB                MOV     A,R3
+00EE F2                MOVX    @R0,A
+00EF 08                INC     R0
+00F0 EA                MOV     A,R2
+00F1 F2                MOVX    @R0,A
+00F2 08                INC     R0
+00F3 E9                MOV     A,R1
+00F4 F2                MOVX    @R0,A
+00F5 7BFF              MOV     R3,#0FFH
+00F7 7A00        R     MOV     R2,#HIGH ?SC_244
+00F9 7900        R     MOV     R1,#LOW ?SC_244
+00FB 1100        E     ACALL   _printf
+00FD         ?C0001:
+                                           ; SOURCE LINE # 68
+                                           ; SOURCE LINE # 69
+00FD 639001            XRL     P1,#01H
+                                           ; SOURCE LINE # 70
+0100 7BFF              MOV     R3,#0FFH
+0102 7A00        R     MOV     R2,#HIGH ?SC_275
+0104 7900        R     MOV     R1,#LOW ?SC_275
+0106 1100        E     ACALL   _printf
+                                           ; SOURCE LINE # 71
+0108 80F3              SJMP    ?C0001
+             ; FUNCTION main (END)
+
+C51 COMPILER V9.53.0.0   HELLON                                                                        03/31/2023 11:19:56 PAGE 3   
+
+NAME                                    CLASS   MSPACE  TYPE    OFFSET  SIZE
+====                                    =====   ======  ====    ======  ====
+
+
+pppAm. . . . . . . . . . . . . . . . .  STATIC   PDATA  PTR      0000H  3
+P1 . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0090H  1
+ppAm . . . . . . . . . . . . . . . . .  STATIC   PDATA  ARRAY    0003H  12
+size_t . . . . . . . . . . . . . . . .  TYPEDEF  -----  U_INT    -----  2
+_printf. . . . . . . . . . . . . . . .  EXTERN   CODE   PROC     -----  -----
+TI . . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      0099H  1
+pAm. . . . . . . . . . . . . . . . . .  STATIC   PDATA  ARRAY    000FH  51
+main . . . . . . . . . . . . . . . . .  PUBLIC   CODE   PROC     0000H  -----
+Am . . . . . . . . . . . . . . . . . .  STATIC   PDATA  ARRAY    0042H  51
+SCON . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0098H  1
+TMOD . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0089H  1
+TH1. . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   008DH  1
+TR1. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      008EH  1
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    266    ----
+   CONSTANT SIZE    =    298    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =    117    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

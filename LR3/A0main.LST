@@ -1,0 +1,99 @@
+A51 MACRO ASSEMBLER  MODUL-1                                                                          03/14/2023 11:55:25 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02b
+OBJECT MODULE PLACED IN A0main.OBJ
+ASSEMBLER INVOKED BY: C:\Program Files\KEIL_5_953\C51\BIN\A51.EXE A0main.a51 SET(SMALL) DEBUG XREF PAGEWIDTH(132) PAGELENGTH(900) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     $title  (Modul-1)
+                       2     $xref 
+                       3     ;$NOMOD51
+                       4             NAME    ASMQS0
+                       5     ; Процедуры (имена)
+                       6     EXTRN   CODE    (PUT_CRLF, PUTSTRING)
+                       7     ; Флажок вывода
+                       8     PUBLIC  BITTXT
+                       9     ; Сегменты
+                      10     ;PROG    SEGMENT CODE
+                      11     MCONST  SEGMENT CODE
+                      12     ;BITVAR  SEGMENT BIT
+                      13     STACK   SEGMENT IDATA
+                      14     
+                      15     ;=======
+                      16             USING   0 ; банк регистров 0
+                      17     ; Старт программы по включению питания (RESET).
+0000 8000             18             SJMP    START
+                      19     ; Установить указатель стека в начало.
+0002 758100   F       20     START:  MOV     SP,#STACK-1
+                      21     
+                      22     ; Инициализировать последовательный интерфейс UART
+                      23     ; Использовать TIMER 1 для тактирования сдвига
+                      24     ; Тактовая частота МК = 12. MHz, 2403 бод.
+0005 758920           25             MOV     TMOD, #00100000B ; C/T = 0, Mode = 2
+0008 758DF3           26             MOV     TH1, #0F3H
+000B D28E             27             SETB    TR1
+000D 759852           28             MOV     SCON, #01010010B
+                      29     
+                      30     ; Очистить BITTXT, чтобы читать память CODE
+0010 C2D5             31             CLR     BITTXT
+                      32     
+                      33     ; Основной цикл головной программы.
+                      34     ; Вывод строки и (ВК) (ПС)
+0012                  35     REPEAT:        
+                      36     ; Выдать сообщение 
+0012 900000   F       37             MOV     DPTR, #TXT
+0015 120000   F       38             CALL    PUTSTRING
+0018 120000   F       39             CALL    PUT_CRLF
+                      40     ; повторение
+001B 80F5             41             SJMP    REPEAT
+                      42     
+                      43     ;=======
+----                  44             RSEG    STACK
+0000                  45             DS      1 ; Стек на 1 байт
+                      46     
+                      47     ;=======
+----                  48             RSEG    MCONST
+0000 C2F1E5EC         49     TXT:    DB      'Всем привет!', 00H
+0004 20EFF0E8                
+0008 E2E5F221                
+000C 00                      
+                      50     
+                      51     ;=======
+                      52     ;        RSEG    BITVAR
+                      53     ; BITTXT = 0 чтение из памяти CODE 
+                      54     ; BITTXT = 1 чтение из памяти XDATA
+                      55     ;BITTXT: DBIT    1
+  00D5                56     BITTXT  equ     F0
+                      57     
+                      58             END
+A51 MACRO ASSEMBLER  MODUL-1                                                                          03/14/2023 11:55:25 PAGE     2
+
+XREF SYMBOL TABLE LISTING
+---- ------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES / REFERENCES
+
+ASMQS0 . . . . . .  N NUMB   -----          4
+BITTXT . . . . . .  B ADDR   00D0H.5 A      8 31 56#
+F0 . . . . . . . .  B ADDR   00D0H.5 A      56
+MCONST . . . . . .  C SEG    000DH       REL=UNIT   11# 48
+PUTSTRING. . . . .  C ADDR   -----       EXT   6# 38
+PUT_CRLF . . . . .  C ADDR   -----       EXT   6# 39
+REPEAT . . . . . .  C ADDR   0012H   A      35# 41
+SCON . . . . . . .  D ADDR   0098H   A      28
+SP . . . . . . . .  D ADDR   0081H   A      20
+STACK. . . . . . .  I SEG    0001H       REL=UNIT   13# 20 44
+START. . . . . . .  C ADDR   0002H   A      18 20#
+TH1. . . . . . . .  D ADDR   008DH   A      26
+TMOD . . . . . . .  D ADDR   0089H   A      25
+TR1. . . . . . . .  B ADDR   0088H.6 A      27
+TXT. . . . . . . .  C ADDR   0000H   R   SEG=MCONST   37 49#
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

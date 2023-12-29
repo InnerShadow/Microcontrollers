@@ -1,0 +1,221 @@
+C51 COMPILER V9.53.0.0   MAIN0                                                             11/01/2023 12:36:14 PAGE 1   
+
+
+C51 COMPILER V9.53.0.0, COMPILATION OF MODULE MAIN0
+OBJECT MODULE PLACED IN main0.OBJ
+COMPILER INVOKED BY: C:\Program Files\KEIL_5_953\C51\BIN\C51.EXE main0.c LARGE ROM(COMPACT) OPTIMIZE(0,SIZE) BROWSE DEBU
+                    -G OBJECTEXTEND CODE SYMBOLS TABS(2)
+
+line level    source
+
+   1          ///////////////////////////////////////////////////
+   2          // Программа ДПФ действительных последовательностей
+   3          // Головная процедура.
+   4          //#pragma SMALL
+   5          #pragma CODE
+   6          #include "dpf0.h"
+   7          
+   8          unsigned char n;
+   9          unsigned char nm1, nd2; // резерв , nd4
+  10          float SReal[ N ];
+  11          // float SImag[ N ];
+  12          float SReal_out[ N ];
+  13          float SImag_out[ N ];
+  14          
+  15          ///////////// main
+  16          void main() {
+  17   1        register unsigned char i;
+  18   1        n = N;
+  19   1        nm1 = n - 1;
+  20   1      #if N != 256
+  21   1        nd2 = n >> 1;
+  22   1      //  nd4 = nd2 >> 1;
+  23   1      #else
+                nd2 = 0x80;
+              //  nd4 = 0x40;
+              #endif
+  27   1      // входной сигнал. Импульс.
+  28   1        for ( i = 0; i <= Nm1; ++i )
+  29   1      //  for ( i = 0; i < N; ++i )
+  30   1          SReal[ i ] = 0.f;
+  31   1        SReal[ 1 ] = 1.0f;
+  32   1        FunR_DPF();
+  33   1        n = nd2, nd2 >>= 1; // n >>= 1; 
+  34   1        FunR_DPF(); // 1 волна
+  35   1        SReal[ 1 ] = 0.f;
+  36   1        SReal[ 3 ] = 1.0f;
+  37   1        FunR_DPF(); // 3 волны
+  38   1      // ...
+  39   1        n = nd2, nd2 >>= 1; // n >>= 1;  n = nd2, nd2 >>= 1;
+  40   1        FunR_DPF();
+  41   1        while(1) ;
+  42   1      }
+C51 COMPILER V9.53.0.0   MAIN0                                                             11/01/2023 12:36:14 PAGE 2   
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+             ; FUNCTION main (BEGIN)
+                                           ; SOURCE LINE # 16
+                                           ; SOURCE LINE # 18
+0000 900000      R     MOV     DPTR,#n
+0003 7480              MOV     A,#080H
+0005 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 19
+0006 900000      R     MOV     DPTR,#n
+0009 E0                MOVX    A,@DPTR
+000A FF                MOV     R7,A
+000B EF                MOV     A,R7
+000C 14                DEC     A
+000D FF                MOV     R7,A
+000E 900000      R     MOV     DPTR,#nm1
+0011 EF                MOV     A,R7
+0012 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 21
+0013 900000      R     MOV     DPTR,#n
+0016 E0                MOVX    A,@DPTR
+0017 FF                MOV     R7,A
+0018 EF                MOV     A,R7
+0019 C3                CLR     C
+001A 13                RRC     A
+001B FF                MOV     R7,A
+001C 900000      R     MOV     DPTR,#nd2
+001F EF                MOV     A,R7
+0020 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 28
+0021 900000      R     MOV     DPTR,#i
+0024 E4                CLR     A
+0025 F0                MOVX    @DPTR,A
+0026         ?C0001:
+0026 900000      R     MOV     DPTR,#i
+0029 E0                MOVX    A,@DPTR
+002A FF                MOV     R7,A
+002B EF                MOV     A,R7
+002C D3                SETB    C
+002D 947F              SUBB    A,#07FH
+002F 501E              JNC     ?C0002
+                                           ; SOURCE LINE # 30
+0031 900000      R     MOV     DPTR,#i
+0034 E0                MOVX    A,@DPTR
+0035 FF                MOV     R7,A
+0036 75F004            MOV     B,#04H
+0039 EF                MOV     A,R7
+003A 900000      R     MOV     DPTR,#SReal
+003D 120000      E     LCALL   ?C?OFFXADD
+0040 120000      E     LCALL   ?C?LSTKXDATA
+0043 00                DB      00H
+0044 00                DB      00H
+0045 00                DB      00H
+0046 00                DB      00H
+0047         ?C0003:
+0047 900000      R     MOV     DPTR,#i
+004A E0                MOVX    A,@DPTR
+004B 04                INC     A
+004C F0                MOVX    @DPTR,A
+004D 80D7              SJMP    ?C0001
+004F         ?C0002:
+C51 COMPILER V9.53.0.0   MAIN0                                                             11/01/2023 12:36:14 PAGE 3   
+
+                                           ; SOURCE LINE # 31
+004F 900000      R     MOV     DPTR,#SReal+04H
+0052 120000      E     LCALL   ?C?LSTKXDATA
+0055 3F                DB      03FH
+0056 80                DB      080H
+0057 00                DB      00H
+0058 00                DB      00H
+                                           ; SOURCE LINE # 32
+0059 120000      E     LCALL   FunR_DPF
+                                           ; SOURCE LINE # 33
+005C 900000      R     MOV     DPTR,#nd2
+005F E0                MOVX    A,@DPTR
+0060 FF                MOV     R7,A
+0061 900000      R     MOV     DPTR,#n
+0064 EF                MOV     A,R7
+0065 F0                MOVX    @DPTR,A
+0066 900000      R     MOV     DPTR,#nd2
+0069 E0                MOVX    A,@DPTR
+006A FF                MOV     R7,A
+006B EF                MOV     A,R7
+006C C3                CLR     C
+006D 13                RRC     A
+006E FF                MOV     R7,A
+006F 900000      R     MOV     DPTR,#nd2
+0072 EF                MOV     A,R7
+0073 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 34
+0074 120000      E     LCALL   FunR_DPF
+                                           ; SOURCE LINE # 35
+0077 900000      R     MOV     DPTR,#SReal+04H
+007A 120000      E     LCALL   ?C?LSTKXDATA
+007D 00                DB      00H
+007E 00                DB      00H
+007F 00                DB      00H
+0080 00                DB      00H
+                                           ; SOURCE LINE # 36
+0081 900000      R     MOV     DPTR,#SReal+0CH
+0084 120000      E     LCALL   ?C?LSTKXDATA
+0087 3F                DB      03FH
+0088 80                DB      080H
+0089 00                DB      00H
+008A 00                DB      00H
+                                           ; SOURCE LINE # 37
+008B 120000      E     LCALL   FunR_DPF
+                                           ; SOURCE LINE # 39
+008E 900000      R     MOV     DPTR,#nd2
+0091 E0                MOVX    A,@DPTR
+0092 FF                MOV     R7,A
+0093 900000      R     MOV     DPTR,#n
+0096 EF                MOV     A,R7
+0097 F0                MOVX    @DPTR,A
+0098 900000      R     MOV     DPTR,#nd2
+009B E0                MOVX    A,@DPTR
+009C FF                MOV     R7,A
+009D EF                MOV     A,R7
+009E C3                CLR     C
+009F 13                RRC     A
+00A0 FF                MOV     R7,A
+00A1 900000      R     MOV     DPTR,#nd2
+00A4 EF                MOV     A,R7
+00A5 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 40
+C51 COMPILER V9.53.0.0   MAIN0                                                             11/01/2023 12:36:14 PAGE 4   
+
+00A6 120000      E     LCALL   FunR_DPF
+00A9         ?C0004:
+                                           ; SOURCE LINE # 41
+00A9 80FE              SJMP    ?C0004
+00AB         ?C0005:
+                                           ; SOURCE LINE # 42
+00AB         ?C0006:
+00AB 22                RET     
+             ; FUNCTION main (END)
+
+C51 COMPILER V9.53.0.0   MAIN0                                                             11/01/2023 12:36:14 PAGE 5   
+
+NAME                                    CLASS   MSPACE  TYPE    OFFSET  SIZE
+====                                    =====   ======  ====    ======  ====
+
+
+nd2. . . . . . . . . . . . . . . . . .  PUBLIC   XDATA  U_CHAR   0000H  1
+nm1. . . . . . . . . . . . . . . . . .  PUBLIC   XDATA  U_CHAR   0001H  1
+SImag_out. . . . . . . . . . . . . . .  PUBLIC   XDATA  ARRAY    0002H  512
+SReal_out. . . . . . . . . . . . . . .  PUBLIC   XDATA  ARRAY    0202H  512
+main . . . . . . . . . . . . . . . . .  PUBLIC   CODE   PROC     0000H  -----
+  i. . . . . . . . . . . . . . . . . .  AUTO     XDATA  U_CHAR   0000H  1
+FunR_DPF . . . . . . . . . . . . . . .  EXTERN   CODE   PROC     -----  -----
+SReal. . . . . . . . . . . . . . . . .  PUBLIC   XDATA  ARRAY    0402H  512
+n. . . . . . . . . . . . . . . . . . .  PUBLIC   XDATA  U_CHAR   0602H  1
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    172    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   1540    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

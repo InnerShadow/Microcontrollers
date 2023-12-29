@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="ffc4e8d6-af1c-42f2-a9b0-e56d91c37bab" name="UsCD1" linkedPackageId="00720202-477f-4be5-9edf-04a0452734bc" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <profileInstances>
+    <packageHasProfileInstances Id="66dbf4de-8792-4f67-b658-c97b48c48bc7">
+      <profileInstance Id="aa65e59e-8faa-44a5-9e8f-b35495a5147b" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="6f6ff6c1-6261-47d8-ad1c-ee35ab4c0c5c">
+      <profileInstance Id="3898bac0-bafa-410a-a817-76f42854882e" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="bc192b6e-27a4-4683-82f1-47007d221d8e" name="Маг" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="4ccd0e8d-5576-408a-840c-1f0bca60a844" />
+        <targetEnds>
+          <association Id="2dc0b239-de6f-4669-9535-cdb6a4ac6a93" isDerived="false" sourceEndRoleName="Маг" targetEndRoleName="Исс сост дел в наст мои" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="a9f2c8dc-166a-4259-86ea-a1abd3b24a7a" LastKnownName="Исс сост дел в наст мои" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="3c2f0ceb-da42-47dd-880f-118f340cd671" name="Маг" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="7e621208-c748-49e3-8428-085b21dcb773" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="2fe8ed93-9d56-4051-a7c0-27585857317a" name="Исс сост дел в наст мои" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="f4b44752-a8ef-41c0-a48c-c32521a42a38" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="888e801b-5170-40ec-9da1-378371be2f5e" />
+          </association>
+          <association Id="19801529-45ce-4575-a47f-b22b5faa6e6b" isDerived="false" sourceEndRoleName="Маг" targetEndRoleName="Концепция реш" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="9ee8b69d-6593-4482-9ccf-b84f6d7fcf4f" LastKnownName="Концепция реш" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="a90d1910-3a88-4c67-a5d6-866bd8cbfc23" name="Маг" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="fdf78015-c6a0-4289-b46d-ce4cb5b717d7" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="4f6cabd8-1d7c-422a-ac89-2f8673b0a749" name="Концепция реш" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="d2f10c47-dbc0-4e01-8997-0c18e541fccb" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="e33d9b83-7c8e-495d-947f-ed6150254cc8" />
+          </association>
+          <association Id="b7f13235-9175-4a92-ab00-9dc5a6ebbe20" isDerived="false" sourceEndRoleName="Маг" targetEndRoleName="Разраб ПО" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="60faeb36-6d2d-4edb-978b-1e903072923c" LastKnownName="Разраб ПО" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="33690796-da13-4b97-90ba-df789f87dac5" name="Маг" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="dd003740-9afc-4fda-8a3d-56fbcfa71750" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="545588a7-a130-446d-8a96-11527dc9bda9" name="Разраб ПО" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="2e1cea3c-622b-48f0-b2c0-162e8467f2d4" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="6e804b71-f14b-4705-a0e9-7ad51ff60639" />
+          </association>
+          <association Id="e4ef664e-2e2f-4b38-baf3-08d462e49fd5" isDerived="false" sourceEndRoleName="Маг" targetEndRoleName="Апробация" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="1bab66dd-7464-431b-b128-960d05a7da4f" LastKnownName="Апробация" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="5023411a-3216-4a08-a0b7-3a6501b657ab" name="Маг" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="790cf68a-a3c9-4215-823e-aaa25af20c40" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="cb5be67f-4887-4917-9b46-1a81e6b681c4" name="Апробация" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="bcadbf5c-6158-4ff0-bb4e-ddaa6d64b04a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="f997b88e-4a25-4685-b2ee-17a60f1797ec" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="290869bf-b7e7-4739-af21-5d35e7d15d22" name="Рук" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="eda86552-6a23-4918-9c6d-559e83dcd745" />
+        <targetEnds>
+          <association Id="821924fa-9136-4af4-8413-3f0064ca8acb" isDerived="false" sourceEndRoleName="Рук" targetEndRoleName="Пост зад " isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="66d1d381-0a30-4088-809a-3960c3769ef7" LastKnownName="Пост зад " />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="198ff4ad-bd9d-4fe4-824f-e8512526cbaa" name="Рук" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="66d83201-99ff-49c6-bc67-c6157e1b3d66" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c8334ad5-8e3f-4a62-a176-ed43bde4b205" name="Пост зад " isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="285c0008-fb40-43f9-8f91-7cc18cc9f5e1" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="faa80e27-32a1-4604-bcc0-39ece07789f9" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="5514d122-1a16-47e7-8808-10eccfb05b0e" name="Actor12" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="ebd1ccbb-9ccb-4f01-81e1-4fe3654b7bfc" />
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="a9f2c8dc-166a-4259-86ea-a1abd3b24a7a" name="Исс сост дел в наст мои" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="b34be12c-b9ce-45ee-b41e-d3be528e0b57" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="9ee8b69d-6593-4482-9ccf-b84f6d7fcf4f" name="Концепция реш" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="e77540b2-3787-4112-8ff8-f3726f68c149" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="60faeb36-6d2d-4edb-978b-1e903072923c" name="Разраб ПО" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="63c8e4fc-e3d1-4d9c-830a-87776dfb9baf" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="1bab66dd-7464-431b-b128-960d05a7da4f" name="Апробация" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="14edd0b0-4a80-4b7c-bf58-0d41df5fe780" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="ca591148-6f95-4dff-ac7d-47a1826ad4b5" name="Инф поиск" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="a7c89336-53f6-4731-9161-a2a056be0cbc" />
+        <additions>
+          <include Id="9144184b-77cc-49a9-a717-5521542cd0b5">
+            <useCaseMoniker Id="846b5582-644e-4494-a715-cd372005d1a3" LastKnownName="UseCase1" />
+            <elementDefinition Id="2b2f258d-da37-439b-8816-4b1f5ab14802" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="66d1d381-0a30-4088-809a-3960c3769ef7" name="Пост зад " isAbstract="false" isLeaf="false">
+        <elementDefinition Id="58365120-7fd6-4a00-a740-557b90a33007" />
+        <targetEnds>
+          <association Id="58a3eeb4-a3ef-4e81-9a46-3743ea441a9d" isDerived="false" sourceEndRoleName="Пост зад " targetEndRoleName="Маг" isLeaf="false" isAbstract="false">
+            <actorMoniker Id="bc192b6e-27a4-4683-82f1-47007d221d8e" LastKnownName="Маг" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="2c2c4ff7-188d-4601-b4a8-625eab9e73d5" name="Пост зад " isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="558cef16-1f8b-4105-9d6f-46748057e80f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="2a5231a8-d4ee-48cf-a563-207e7c81289b" name="Маг" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="978dacf2-b729-4695-a1df-1804fdb8f8c6" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="837881b6-88c9-49e0-9590-da37ffdf43fa" />
+          </association>
+        </targetEnds>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="846b5582-644e-4494-a715-cd372005d1a3" name="UseCase1" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="ece20b54-a3f6-42b3-90fb-9225e29b2fd7" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="00720202-477f-4be5-9edf-04a0452734bc" name="ModPr1">
+    <elementDefinition Id="8708f180-8da8-42f9-bbc7-bc70b39da7ec" />
+  </package>
+</useCaseModelRoot>

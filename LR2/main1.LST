@@ -1,0 +1,152 @@
+C51 COMPILER V9.53.0.0   MAIN1                                                             03/03/2023 15:08:08 PAGE 1   
+
+
+C51 COMPILER V9.53.0.0, COMPILATION OF MODULE MAIN1
+OBJECT MODULE PLACED IN main1.OBJ
+COMPILER INVOKED BY: C:\Program Files\KEIL_5_953\C51\BIN\C51.EXE main1.c ROM(SMALL) OPTIMIZE(8,SPEED) BROWSE DEBUG OBJEC
+                    -TEXTEND TABS(2)
+
+line level    source
+
+   1          ///////////////////////////////////////////////////
+   2          // Программа ДПФ действительных последовательностей
+   3          // Головная процедура.
+   4          #pragma SMALL
+   5          #pragma CODE
+   6          #include "dpf1.h"
+   7          
+   8          unsigned char n;
+   9          unsigned char nm1, nd2; // резерв , nd4
+  10          float xdata SReal[ N ];
+  11          // float xdata SImag[ N ];
+  12          float xdata SReal_out[ N ];
+  13          float xdata SImag_out[ N ];
+  14          
+  15          ///////////// main
+  16          void main() {
+  17   1        register unsigned char i;
+  18   1        n = N;
+  19   1        nm1 = n - 1;
+  20   1      #if N != 256
+  21   1        nd2 = n >> 1;
+  22   1      //  nd4 = nd2 >> 1;
+  23   1      #else
+                nd2 = 0x80;
+              //  nd4 = 0x40;
+              #endif
+  27   1      // входной сигнал. Импульс.
+  28   1      //  for ( i = 0; i <= Nm1; ++i )
+  29   1        for ( i = 0; i < N; ++i )
+  30   1          SReal[ i ] = 0.f;
+  31   1        SReal[ 1 ] = 1.0f;
+  32   1        FunR_DPF();
+  33   1        n >>= 1; // n >>= 1; n = nd2, nd2 >>= 1;
+  34   1        FunR_DPF(); // 1 волна
+  35   1        SReal[ 1 ] = 0.f;
+  36   1        SReal[ 3 ] = 1.0f;
+  37   1        FunR_DPF(); // 3 волны
+  38   1      // ...
+  39   1        n >>= 1; // n >>= 1;  n = nd2, nd2 >>= 1;
+  40   1        FunR_DPF();
+  41   1        while(1){};
+  42   1      }
+C51 COMPILER V9.53.0.0   MAIN1                                                             03/03/2023 15:08:08 PAGE 2   
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+             ; FUNCTION main (BEGIN)
+                                           ; SOURCE LINE # 16
+                                           ; SOURCE LINE # 18
+0000 750080      R     MOV     n,#080H
+                                           ; SOURCE LINE # 19
+0003 E500        R     MOV     A,n
+0005 14                DEC     A
+0006 F500        R     MOV     nm1,A
+                                           ; SOURCE LINE # 21
+0008 E500        R     MOV     A,n
+000A C3                CLR     C
+000B 13                RRC     A
+000C F500        R     MOV     nd2,A
+                                           ; SOURCE LINE # 29
+;---- Variable 'i' assigned to Register 'R3' ----
+000E E4                CLR     A
+000F FB                MOV     R3,A
+0010         ?C0001:
+                                           ; SOURCE LINE # 30
+0010 75F004            MOV     B,#04H
+0013 EB                MOV     A,R3
+0014 A4                MUL     AB
+0015 2400        R     ADD     A,#LOW SReal
+0017 F582              MOV     DPL,A
+0019 E5F0              MOV     A,B
+001B 3400        R     ADDC    A,#HIGH SReal
+001D F583              MOV     DPH,A
+001F 1100        E     ACALL   ?C?LSTKXDATA
+0021 00                DB      00H
+0022 00                DB      00H
+0023 00                DB      00H
+0024 00                DB      00H
+0025 0B                INC     R3
+0026 BB80E7            CJNE    R3,#080H,?C0001
+0029         ?C0002:
+                                           ; SOURCE LINE # 31
+0029 900000      R     MOV     DPTR,#SReal+04H
+002C 1100        E     ACALL   ?C?LSTKXDATA
+002E 3F                DB      03FH
+002F 80                DB      080H
+0030 00                DB      00H
+0031 00                DB      00H
+                                           ; SOURCE LINE # 32
+0032 1100        E     ACALL   FunR_DPF
+                                           ; SOURCE LINE # 33
+0034 E500        R     MOV     A,n
+0036 C3                CLR     C
+0037 13                RRC     A
+0038 F500        R     MOV     n,A
+                                           ; SOURCE LINE # 34
+003A 1100        E     ACALL   FunR_DPF
+                                           ; SOURCE LINE # 35
+003C 900000      R     MOV     DPTR,#SReal+04H
+003F 1100        E     ACALL   ?C?LSTKXDATA
+0041 00                DB      00H
+0042 00                DB      00H
+0043 00                DB      00H
+0044 00                DB      00H
+                                           ; SOURCE LINE # 36
+C51 COMPILER V9.53.0.0   MAIN1                                                             03/03/2023 15:08:08 PAGE 3   
+
+0045 900000      R     MOV     DPTR,#SReal+0CH
+0048 1100        E     ACALL   ?C?LSTKXDATA
+004A 3F                DB      03FH
+004B 80                DB      080H
+004C 00                DB      00H
+004D 00                DB      00H
+                                           ; SOURCE LINE # 37
+004E 1100        E     ACALL   FunR_DPF
+                                           ; SOURCE LINE # 39
+0050 E500        R     MOV     A,n
+0052 C3                CLR     C
+0053 13                RRC     A
+0054 F500        R     MOV     n,A
+                                           ; SOURCE LINE # 40
+0056 1100        E     ACALL   FunR_DPF
+0058         ?C0004:
+                                           ; SOURCE LINE # 41
+0058 80FE              SJMP    ?C0004
+             ; FUNCTION main (END)
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     90    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   1536    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      3    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

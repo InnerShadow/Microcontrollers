@@ -1,0 +1,35 @@
+Машинный язык Mashina
+asm add a,r0
+p 1
+asm inc a
+
+Преобразование 8 -> 16
+MOV      R5,#0x2A
+MOV      A,R5
+RLC      A
+SUBB     A,ACC(0xE0)
+MOV      R4,A
+
+Сценарий script
+asm mov r7,#13
+asm mov a,r7
+asm rlc a
+asm subb a,acc
+asm mov r6,a
+
+Два числа
+asm c:0
+// +
+asm mov r7,#7*2+8
+asm mov a,r7
+asm rlc a
+asm subb a,acc
+asm mov r6,a
+// -
+asm mov r5,#8-30-7*2
+asm mov a,r5
+asm rlc a
+asm subb a,acc
+asm mov r4,a
+
+LA (p1 & 0x2) >> 1

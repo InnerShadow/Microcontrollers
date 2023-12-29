@@ -1,0 +1,336 @@
+C51 COMPILER V9.53.0.0   DPF1                                                              03/03/2023 15:08:08 PAGE 1   
+
+
+C51 COMPILER V9.53.0.0, COMPILATION OF MODULE DPF1
+OBJECT MODULE PLACED IN dpf1.OBJ
+COMPILER INVOKED BY: C:\Program Files\KEIL_5_953\C51\BIN\C51.EXE dpf1.c ROM(SMALL) OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECT
+                    -EXTEND TABS(2)
+
+line level    source
+
+   1          // Header: 1-я программа ДПФ действительных последовательностей
+   2          // File Name: 
+   3          // Author:
+   4          // Date:
+   5          #pragma SMALL
+   6          #pragma CODE
+   7          #pragma NOCO
+   8          #include "dpf1.h"
+   9          #include <math.h>
+  10          #define Var 5
+  11          
+  12          /////////////////////// FunR_DPF
+  13          #if Var == 0
+  78          void FunR_DPF( void ) {
+  79   1        register unsigned char k, i;
+  80   1        float WorkR, WorkI, arg, A, sig, wrk;
+  81   1        SImag_out[ 0 ] = 0.f;
+  82   1        WorkR = SReal[ 0 ];
+  83   1        for ( i = 1; i < n; i++ )
+  84   1          WorkR += SReal[ i ];
+  85   1        SReal_out[ 0 ] = WorkR;
+  86   1        arg = 2 * M_PI/ n;
+  87   1        for ( k = 1; k < n; k++ ) {
+  88   2          WorkI = 0.f;
+  89   2          WorkR = SReal[ 0 ];
+  90   2          for ( i = 1; i < n; i++ ) {
+  91   3            wrk = cos( A = k * i * arg );
+  92   3            sig = SReal[ i ];
+  93   3            WorkR = wrk * sig + WorkR;
+  94   3            WorkI -= sin( A )* sig;
+  95   3          }
+  96   2          SReal_out[ k ] = WorkR;
+  97   2          SImag_out[ k ] = WorkI;
+  98   2        }
+  99   1      }
+ 100          
+ 101          #endif
+C51 COMPILER V9.53.0.0   DPF1                                                              03/03/2023 15:08:08 PAGE 2   
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+             ; FUNCTION FunR_DPF (BEGIN)
+                                           ; SOURCE LINE # 78
+                                           ; SOURCE LINE # 81
+0000 900000      E     MOV     DPTR,#SImag_out
+0003 1100        E     ACALL   ?C?LSTKXDATA
+0005 00                DB      00H
+0006 00                DB      00H
+0007 00                DB      00H
+0008 00                DB      00H
+                                           ; SOURCE LINE # 82
+0009 900000      E     MOV     DPTR,#SReal
+000C E0                MOVX    A,@DPTR
+000D FC                MOV     R4,A
+000E A3                INC     DPTR
+000F E0                MOVX    A,@DPTR
+0010 FD                MOV     R5,A
+0011 A3                INC     DPTR
+0012 E0                MOVX    A,@DPTR
+0013 FE                MOV     R6,A
+0014 A3                INC     DPTR
+0015 E0                MOVX    A,@DPTR
+0016 F500        R     MOV     WorkR+03H,A
+0018 8E00        R     MOV     WorkR+02H,R6
+001A 8D00        R     MOV     WorkR+01H,R5
+001C 8C00        R     MOV     WorkR,R4
+                                           ; SOURCE LINE # 83
+001E 750001      R     MOV     i,#01H
+0021         ?C0001:
+0021 E500        R     MOV     A,i
+0023 C3                CLR     C
+0024 9500        E     SUBB    A,n
+0026 5031              JNC     ?C0002
+                                           ; SOURCE LINE # 84
+0028 AF00        R     MOV     R7,WorkR+03H
+002A AE00        R     MOV     R6,WorkR+02H
+002C AD00        R     MOV     R5,WorkR+01H
+002E AC00        R     MOV     R4,WorkR
+0030 75F004            MOV     B,#04H
+0033 E500        R     MOV     A,i
+0035 A4                MUL     AB
+0036 2400        E     ADD     A,#LOW SReal
+0038 F582              MOV     DPL,A
+003A E5F0              MOV     A,B
+003C 3400        E     ADDC    A,#HIGH SReal
+003E F583              MOV     DPH,A
+0040 E0                MOVX    A,@DPTR
+0041 F8                MOV     R0,A
+0042 A3                INC     DPTR
+0043 E0                MOVX    A,@DPTR
+0044 F9                MOV     R1,A
+0045 A3                INC     DPTR
+0046 E0                MOVX    A,@DPTR
+0047 FA                MOV     R2,A
+0048 A3                INC     DPTR
+0049 E0                MOVX    A,@DPTR
+004A FB                MOV     R3,A
+004B 1100        E     ACALL   ?C?FPADD
+004D 8F00        R     MOV     WorkR+03H,R7
+004F 8E00        R     MOV     WorkR+02H,R6
+C51 COMPILER V9.53.0.0   DPF1                                                              03/03/2023 15:08:08 PAGE 3   
+
+0051 8D00        R     MOV     WorkR+01H,R5
+0053 8C00        R     MOV     WorkR,R4
+0055 0500        R     INC     i
+0057 80C8              SJMP    ?C0001
+0059         ?C0002:
+                                           ; SOURCE LINE # 85
+0059 AF00        R     MOV     R7,WorkR+03H
+005B AE00        R     MOV     R6,WorkR+02H
+005D AD00        R     MOV     R5,WorkR+01H
+005F AC00        R     MOV     R4,WorkR
+0061 900000      E     MOV     DPTR,#SReal_out
+0064 1100        E     ACALL   ?C?LSTXDATA
+                                           ; SOURCE LINE # 86
+0066 AC00        E     MOV     R4,n
+0068 E4                CLR     A
+0069 1100        E     ACALL   ?C?FCASTC
+006B A804              MOV     R0,AR4
+006D A905              MOV     R1,AR5
+006F AA06              MOV     R2,AR6
+0071 AB07              MOV     R3,AR7
+0073 7FDB              MOV     R7,#0DBH
+0075 7E0F              MOV     R6,#0FH
+0077 7DC9              MOV     R5,#0C9H
+0079 7C40              MOV     R4,#040H
+007B 1100        E     ACALL   ?C?FPDIV
+007D 8F00        R     MOV     arg+03H,R7
+007F 8E00        R     MOV     arg+02H,R6
+0081 8D00        R     MOV     arg+01H,R5
+0083 8C00        R     MOV     arg,R4
+                                           ; SOURCE LINE # 87
+0085 750001      R     MOV     k,#01H
+0088         ?C0004:
+0088 E500        R     MOV     A,k
+008A C3                CLR     C
+008B 9500        E     SUBB    A,n
+008D 4002              JC      $ + 4H
+008F 0100        R     AJMP    ?C0010
+                                           ; SOURCE LINE # 88
+0091 E4                CLR     A
+0092 F500        R     MOV     WorkI+03H,A
+0094 F500        R     MOV     WorkI+02H,A
+0096 F500        R     MOV     WorkI+01H,A
+0098 F500        R     MOV     WorkI,A
+                                           ; SOURCE LINE # 89
+009A 900000      E     MOV     DPTR,#SReal
+009D E0                MOVX    A,@DPTR
+009E FC                MOV     R4,A
+009F A3                INC     DPTR
+00A0 E0                MOVX    A,@DPTR
+00A1 FD                MOV     R5,A
+00A2 A3                INC     DPTR
+00A3 E0                MOVX    A,@DPTR
+00A4 FE                MOV     R6,A
+00A5 A3                INC     DPTR
+00A6 E0                MOVX    A,@DPTR
+00A7 F500        R     MOV     WorkR+03H,A
+00A9 8E00        R     MOV     WorkR+02H,R6
+00AB 8D00        R     MOV     WorkR+01H,R5
+00AD 8C00        R     MOV     WorkR,R4
+                                           ; SOURCE LINE # 90
+00AF 750001      R     MOV     i,#01H
+00B2         ?C0007:
+C51 COMPILER V9.53.0.0   DPF1                                                              03/03/2023 15:08:08 PAGE 4   
+
+00B2 E500        R     MOV     A,i
+00B4 C3                CLR     C
+00B5 9500        E     SUBB    A,n
+00B7 4002              JC      $ + 4H
+00B9 0100        R     AJMP    ?C0008
+                                           ; SOURCE LINE # 91
+00BB E500        R     MOV     A,i
+00BD FD                MOV     R5,A
+00BE 7C00              MOV     R4,#00H
+00C0 AF00        R     MOV     R7,k
+00C2 7E00              MOV     R6,#00H
+00C4 1100        E     ACALL   ?C?IMUL
+00C6 AC06              MOV     R4,AR6
+00C8 AD07              MOV     R5,AR7
+00CA E4                CLR     A
+00CB 1100        E     ACALL   ?C?FCASTI
+00CD AB00        R     MOV     R3,arg+03H
+00CF AA00        R     MOV     R2,arg+02H
+00D1 A900        R     MOV     R1,arg+01H
+00D3 A800        R     MOV     R0,arg
+00D5 1100        E     ACALL   ?C?FPMUL
+00D7 8F00        R     MOV     A+03H,R7
+00D9 8E00        R     MOV     A+02H,R6
+00DB 8D00        R     MOV     A+01H,R5
+00DD 8C00        R     MOV     A,R4
+00DF 1100        E     ACALL   _cos
+00E1 8F00        R     MOV     wrk+03H,R7
+00E3 8E00        R     MOV     wrk+02H,R6
+00E5 8D00        R     MOV     wrk+01H,R5
+00E7 8C00        R     MOV     wrk,R4
+                                           ; SOURCE LINE # 92
+00E9 75F004            MOV     B,#04H
+00EC E500        R     MOV     A,i
+00EE A4                MUL     AB
+00EF 2400        E     ADD     A,#LOW SReal
+00F1 F582              MOV     DPL,A
+00F3 E5F0              MOV     A,B
+00F5 3400        E     ADDC    A,#HIGH SReal
+00F7 F583              MOV     DPH,A
+00F9 E0                MOVX    A,@DPTR
+00FA FC                MOV     R4,A
+00FB A3                INC     DPTR
+00FC E0                MOVX    A,@DPTR
+00FD FD                MOV     R5,A
+00FE A3                INC     DPTR
+00FF E0                MOVX    A,@DPTR
+0100 FE                MOV     R6,A
+0101 A3                INC     DPTR
+0102 E0                MOVX    A,@DPTR
+0103 F500        R     MOV     sig+03H,A
+0105 8E00        R     MOV     sig+02H,R6
+0107 8D00        R     MOV     sig+01H,R5
+0109 8C00        R     MOV     sig,R4
+                                           ; SOURCE LINE # 93
+010B FF                MOV     R7,A
+010C AB00        R     MOV     R3,wrk+03H
+010E AA00        R     MOV     R2,wrk+02H
+0110 A900        R     MOV     R1,wrk+01H
+0112 A800        R     MOV     R0,wrk
+0114 1100        E     ACALL   ?C?FPMUL
+0116 AB00        R     MOV     R3,WorkR+03H
+0118 AA00        R     MOV     R2,WorkR+02H
+C51 COMPILER V9.53.0.0   DPF1                                                              03/03/2023 15:08:08 PAGE 5   
+
+011A A900        R     MOV     R1,WorkR+01H
+011C A800        R     MOV     R0,WorkR
+011E 1100        E     ACALL   ?C?FPADD
+0120 8F00        R     MOV     WorkR+03H,R7
+0122 8E00        R     MOV     WorkR+02H,R6
+0124 8D00        R     MOV     WorkR+01H,R5
+0126 8C00        R     MOV     WorkR,R4
+                                           ; SOURCE LINE # 94
+0128 AF00        R     MOV     R7,WorkI+03H
+012A AE00        R     MOV     R6,WorkI+02H
+012C AD00        R     MOV     R5,WorkI+01H
+012E AC00        R     MOV     R4,WorkI
+0130 C004              PUSH    AR4
+0132 C005              PUSH    AR5
+0134 C006              PUSH    AR6
+0136 C007              PUSH    AR7
+0138 AF00        R     MOV     R7,A+03H
+013A AE00        R     MOV     R6,A+02H
+013C AD00        R     MOV     R5,A+01H
+013E AC00        R     MOV     R4,A
+0140 1100        E     ACALL   _sin
+0142 AB00        R     MOV     R3,sig+03H
+0144 AA00        R     MOV     R2,sig+02H
+0146 A900        R     MOV     R1,sig+01H
+0148 A800        R     MOV     R0,sig
+014A 1100        E     ACALL   ?C?FPMUL
+014C A804              MOV     R0,AR4
+014E A905              MOV     R1,AR5
+0150 AA06              MOV     R2,AR6
+0152 AB07              MOV     R3,AR7
+0154 D007              POP     AR7
+0156 D006              POP     AR6
+0158 D005              POP     AR5
+015A D004              POP     AR4
+015C 1100        E     ACALL   ?C?FPSUB
+015E 8F00        R     MOV     WorkI+03H,R7
+0160 8E00        R     MOV     WorkI+02H,R6
+0162 8D00        R     MOV     WorkI+01H,R5
+0164 8C00        R     MOV     WorkI,R4
+                                           ; SOURCE LINE # 95
+0166 0500        R     INC     i
+0168 0100        R     AJMP    ?C0007
+016A         ?C0008:
+                                           ; SOURCE LINE # 96
+016A AF00        R     MOV     R7,WorkR+03H
+016C AE00        R     MOV     R6,WorkR+02H
+016E AD00        R     MOV     R5,WorkR+01H
+0170 AC00        R     MOV     R4,WorkR
+0172 75F004            MOV     B,#04H
+0175 E500        R     MOV     A,k
+0177 A4                MUL     AB
+0178 2400        E     ADD     A,#LOW SReal_out
+017A F582              MOV     DPL,A
+017C E5F0              MOV     A,B
+017E 3400        E     ADDC    A,#HIGH SReal_out
+0180 F583              MOV     DPH,A
+0182 1100        E     ACALL   ?C?LSTXDATA
+                                           ; SOURCE LINE # 97
+0184 AF00        R     MOV     R7,WorkI+03H
+0186 AE00        R     MOV     R6,WorkI+02H
+0188 AD00        R     MOV     R5,WorkI+01H
+018A AC00        R     MOV     R4,WorkI
+C51 COMPILER V9.53.0.0   DPF1                                                              03/03/2023 15:08:08 PAGE 6   
+
+018C 75F004            MOV     B,#04H
+018F E500        R     MOV     A,k
+0191 A4                MUL     AB
+0192 2400        E     ADD     A,#LOW SImag_out
+0194 F582              MOV     DPL,A
+0196 E5F0              MOV     A,B
+0198 3400        E     ADDC    A,#HIGH SImag_out
+019A F583              MOV     DPH,A
+019C 1100        E     ACALL   ?C?LSTXDATA
+                                           ; SOURCE LINE # 98
+019E 0500        R     INC     k
+01A0 0100        R     AJMP    ?C0004
+                                           ; SOURCE LINE # 99
+01A2         ?C0010:
+01A2 22                RET     
+             ; FUNCTION FunR_DPF (END)
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    419    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----      26
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

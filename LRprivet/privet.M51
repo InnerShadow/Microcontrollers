@@ -1,0 +1,222 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                                    03/31/2023  11:20:00  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\PROGRAM FILES\KEIL_5_953\C51\BIN\BL51.EXE HELLOn.obj TO privet PAGEWIDTH (132) PAGELENGTH (900) IXREF CODE (0X0000-0X07FF) XDATA 
+>> (0X0000-0X03FF)
+
+
+MEMORY MODEL: COMPACT
+
+
+INPUT MODULES INCLUDED:
+  HELLOn.obj (HELLON)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51C.LIB (?C_STARTUP)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51C.LIB (?C?CLDOPTR)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51C.LIB (?C?PLDPTR)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51C.LIB (?C?PLDOPTR)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51C.LIB (PRINTF)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51C.LIB (?C_INIT)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51C.LIB (?C?CLDPTR)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51C.LIB (?C?CSTPTR)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51C.LIB (?C?PLDIDATA)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51C.LIB (?C?PLDXDATA)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51C.LIB (?C?PLDPDATA)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51C.LIB (?C?PLDIPDATA)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51C.LIB (?C?PSTPDATA)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51C.LIB (?C?PLDCODE)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51C.LIB (?C?CCASE)
+  C:\PROGRAM FILES\KEIL_5_953\C51\LIB\C51C.LIB (PUTCHAR)
+
+
+LINK MAP OF MODULE:  privet (HELLON)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0005H     UNIT         _DATA_GROUP_
+                    000DH     0013H                  *** GAP ***
+            BIT     0020H.0   0001H.1   UNIT         _BIT_GROUP_
+                    0021H.1   0000H.7                *** GAP ***
+            IDATA   0022H     0001H     UNIT         ?STACK
+
+            * * * * * * *  X D A T A   M E M O R Y  * * * * * * *
+            XDATA   0000H     0075H     INPAGE       ?PD?HELLON
+            XDATA   0075H     000FH     INPAGE       _PDATA_GROUP_
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     035BH     UNIT         ?PR?PRINTF?PRINTF
+            CODE    035EH     012AH     UNIT         ?CO?HELLON
+            CODE    0488H     010EH     UNIT         ?C?LIB_CODE
+            CODE    0596H     010AH     INBLOCK      ?PR?MAIN?HELLON
+            CODE    06A0H     008CH     UNIT         ?C_C51STARTUP
+            CODE    072CH     0080H     UNIT         ?C_INITSEG
+            CODE    07ACH     0027H     UNIT         ?PR?PUTCHAR?PUTCHAR
+
+
+
+OVERLAY MAP OF MODULE:   privet (HELLON)
+
+
+SEGMENT                           BIT_GROUP          DATA_GROUP          PDATA_GROUP
+  +--> CALLED SEGMENT          START    LENGTH     START    LENGTH     START    LENGTH
+--------------------------------------------------------------------------------------
+?C_C51STARTUP                  -----    -----      -----    -----      -----    -----
+  +--> ?PR?MAIN?HELLON
+  +--> ?C_INITSEG
+
+?PR?MAIN?HELLON                -----    -----      -----    -----      -----    -----
+  +--> ?CO?HELLON
+  +--> ?PR?PRINTF?PRINTF
+
+?PR?PRINTF?PRINTF              0020H.0  0001H.1    0008H    0005H      0075H    000FH
+  +--> ?PR?PUTCHAR?PUTCHAR
+
+?C_INITSEG                     -----    -----      -----    -----      -----    -----
+  +--> ?CO?HELLON
+
+
+
+SYMBOL TABLE OF MODULE:  privet (HELLON)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        HELLON
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  X:0000H         PUBLIC        pppAm
+  D:0090H         PUBLIC        P1
+  X:0003H         SYMBOL        ppAm
+  B:0098H.1       PUBLIC        TI
+  X:000FH         SYMBOL        pAm
+  C:0596H         PUBLIC        main
+  X:0042H         SYMBOL        Am
+  D:0098H         PUBLIC        SCON
+  D:0089H         PUBLIC        TMOD
+  D:008DH         PUBLIC        TH1
+  B:0088H.6       PUBLIC        TR1
+  -------         PROC          MAIN
+  C:0596H         LINE#         42
+  C:0596H         LINE#         48
+  C:0599H         LINE#         49
+  C:059CH         LINE#         50
+  C:059FH         LINE#         51
+  C:05A1H         LINE#         52
+  C:05A3H         LINE#         54
+  C:05BDH         LINE#         55
+  C:05D7H         LINE#         56
+  C:05F1H         LINE#         58
+  C:061AH         LINE#         59
+  C:0643H         LINE#         60
+  C:066BH         LINE#         61
+  C:0693H         LINE#         68
+  C:0693H         LINE#         69
+  C:0696H         LINE#         70
+  C:069EH         LINE#         71
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        HELLON
+
+  -------         MODULE        ?C?CLDOPTR
+  C:0488H         PUBLIC        ?C?CLDOPTR
+  -------         ENDMOD        ?C?CLDOPTR
+
+  -------         MODULE        ?C?PLDPTR
+  C:04B5H         PUBLIC        ?C?PLDPTR
+  -------         ENDMOD        ?C?PLDPTR
+
+  -------         MODULE        ?C?PLDOPTR
+  C:04D5H         PUBLIC        ?C?PLDOPTR
+  -------         ENDMOD        ?C?PLDOPTR
+
+  -------         MODULE        PRINTF
+  X:0075H         PUBLIC        ?_PRINTF517?BYTE
+  X:0075H         PUBLIC        ?_PRINTF?BYTE
+  X:0075H         PUBLIC        ?_SPRINTF517?BYTE
+  X:0075H         PUBLIC        ?_SPRINTF?BYTE
+  C:0065H         PUBLIC        _PRINTF
+  C:0065H         PUBLIC        _PRINTF517
+  C:005FH         PUBLIC        _SPRINTF
+  C:005FH         PUBLIC        _SPRINTF517
+  -------         ENDMOD        PRINTF
+
+  -------         MODULE        ?C?CLDPTR
+  C:0505H         PUBLIC        ?C?CLDPTR
+  -------         ENDMOD        ?C?CLDPTR
+
+  -------         MODULE        ?C?CSTPTR
+  C:051EH         PUBLIC        ?C?CSTPTR
+  -------         ENDMOD        ?C?CSTPTR
+
+  -------         MODULE        ?C?PLDIDATA
+  C:0530H         PUBLIC        ?C?PLDIDATA
+  -------         ENDMOD        ?C?PLDIDATA
+
+  -------         MODULE        ?C?PLDXDATA
+  C:0539H         PUBLIC        ?C?PLDXDATA
+  -------         ENDMOD        ?C?PLDXDATA
+
+  -------         MODULE        ?C?PLDPDATA
+  C:0542H         PUBLIC        ?C?PLDPDATA
+  -------         ENDMOD        ?C?PLDPDATA
+
+  -------         MODULE        ?C?PLDIPDATA
+  C:054BH         PUBLIC        ?C?PLDIPDATA
+  -------         ENDMOD        ?C?PLDIPDATA
+
+  -------         MODULE        ?C?PSTPDATA
+  C:055BH         PUBLIC        ?C?PSTPDATA
+  -------         ENDMOD        ?C?PSTPDATA
+
+  -------         MODULE        ?C?PLDCODE
+  C:0564H         PUBLIC        ?C?PLDCODE
+  -------         ENDMOD        ?C?PLDCODE
+
+  -------         MODULE        ?C?CCASE
+  C:0570H         PUBLIC        ?C?CCASE
+  -------         ENDMOD        ?C?CCASE
+
+  -------         MODULE        PUTCHAR
+  C:07ACH         PUBLIC        _PUTCHAR
+  -------         ENDMOD        PUTCHAR
+
+
+
+INTER-MODULE CROSS-REFERENCE LISTING
+------------------------------------
+
+
+NAME . . . . . . . USAGE    MODULE NAMES
+----------------------------------------
+
+?C?CCASE . . . . . CODE;    ?C?CCASE  PRINTF  
+?C?CLDOPTR . . . . CODE;    ?C?CLDOPTR  HELLON  PRINTF  
+?C?CLDPTR. . . . . CODE;    ?C?CLDPTR  PRINTF  
+?C?CSTPTR. . . . . CODE;    ?C?CSTPTR  PRINTF  
+?C?PLDCODE . . . . CODE;    ?C?PLDCODE  ?C?PLDOPTR  ?C?PLDPTR  
+?C?PLDIDATA. . . . CODE;    ?C?PLDIDATA  ?C?PLDOPTR  ?C?PLDPTR  
+?C?PLDIPDATA . . . CODE;    ?C?PLDIPDATA  PRINTF  
+?C?PLDOPTR . . . . CODE;    ?C?PLDOPTR  HELLON  
+?C?PLDPDATA. . . . CODE;    ?C?PLDPDATA  ?C?PLDOPTR  ?C?PLDPTR  
+?C?PLDPTR. . . . . CODE;    ?C?PLDPTR  HELLON  
+?C?PLDXDATA. . . . CODE;    ?C?PLDXDATA  ?C?PLDOPTR  ?C?PLDPTR  
+?C?PSTPDATA. . . . CODE;    ?C?PSTPDATA  PRINTF  
+?C_INITSEGSTART. . CODE;    ** L51 GENERATED **  
+?C_START . . . . . CODE;    ?C_INIT  ?C_STARTUP  
+?C_STARTUP . . . . CODE;    ?C_STARTUP  HELLON  
+?_PRINTF517?BYTE . XDATA;   PRINTF  
+?_PRINTF?BYTE. . . XDATA;   PRINTF  HELLON  
+?_SPRINTF517?BYTE. XDATA;   PRINTF  
+?_SPRINTF?BYTE . . XDATA;   PRINTF  
+MAIN . . . . . . . CODE;    HELLON  ?C_INIT  
+_PRINTF. . . . . . CODE;    PRINTF  HELLON  
+_PRINTF517 . . . . CODE;    PRINTF  
+_PUTCHAR . . . . . CODE;    PUTCHAR  PRINTF  
+_SPRINTF . . . . . CODE;    PRINTF  
+_SPRINTF517. . . . CODE;    PRINTF  
+
+Program Size: data=15.1 xdata=132 code=2003
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

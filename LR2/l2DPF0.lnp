@@ -1,0 +1,6 @@
+"dpf0.obj",
+"main0.obj" 
+TO "l2DPF0" 
+IXREF 
+CODE( 0X0000-0X0BFF )
+XDATA( 0X0000-0X07FF )

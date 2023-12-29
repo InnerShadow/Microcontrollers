@@ -1,0 +1,89 @@
+A51 MACRO ASSEMBLER  MODUL-2                                                                          03/14/2023 11:55:25 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02b
+OBJECT MODULE PLACED IN A1io.OBJ
+ASSEMBLER INVOKED BY: C:\Program Files\KEIL_5_953\C51\BIN\A51.EXE A1io.a51 SET(SMALL) DEBUG XREF PAGEWIDTH(132) PAGELENGTH(900) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     $title  (Modul-2)
+                       2     $xref 
+                       3             NAME    IO_STRING
+                       4     
+                       5             EXTRN   BIT     (BITTXT)
+                       6             EXTRN   CODE    (PUTCHAR)
+                       7     ; Процедуры (имена)
+                       8             PUBLIC  PUT_CRLF, PUTSTRING
+                       9     ; Сегменты
+                      10     STRING_ROUTINES SEGMENT CODE INBLOCK
+                      11     
+                      12     ;=======
+----                  13             RSEG    STRING_ROUTINES
+                      14     ; Символы (ВК) и (ПС).
+  000D                15     CR      equ     0DH ; возврат каретки
+  000A                16     LF      equ     0AH ; перевод строки
+                      17     
+                      18     ; Эта процедура выводит (ВК) и (ПС).
+0000                  19     PUT_CRLF: 
+0000 740D             20             MOV     A,#CR
+                      21     $if  SMALL        
+0002 1100     F       22             ACALL   PUTCHAR
+                      23     $else 
+                                     CALL    PUTCHAR
+                             $endif     
+0004 740A             26             MOV     A,#LF
+                      27     $if  SMALL        
+0006 1100     F       28             ACALL   PUTCHAR
+                      29     $else 
+                                     CALL    PUTCHAR
+                             $endif     
+0008 22               32             RET
+                      33     
+                      34     ; Эта процедура выводит строку с 0 на конце.
+                      35     ; Адрес строки в регистре DPTR.
+                      36     ; Строка находится в памяти CODE или XDATA
+                      37     ; в зависимости от флажка BITTXT.
+0009                  38     PUTSTRING:
+0009 200004   F       39             JB      BITTXT,PS1 ; проверка бита BITTXT
+000C E4               40             CLR     A
+000D 93               41             MOVC    A,@A+DPTR
+000E 8001             42             SJMP    PS2
+0010 E0               43     PS1:    MOVX    A,@DPTR
+0011 6005             44     PS2:    JZ      EXIT
+                      45     $if  SMALL        
+0013 1100     F       46             ACALL   PUTCHAR
+                      47     $else 
+                                     CALL    PUTCHAR
+                             $endif     
+0015 A3               50             INC     DPTR
+0016 80F1             51             SJMP    PUTSTRING
+0018 22               52     EXIT:   RET
+                      53     
+                      54             END
+                              
+A51 MACRO ASSEMBLER  MODUL-2                                                                          03/14/2023 11:55:25 PAGE     2
+
+XREF SYMBOL TABLE LISTING
+---- ------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES / REFERENCES
+
+BITTXT . . . . . .  B ADDR   -----       EXT   5# 39
+CR . . . . . . . .  N NUMB   000DH   A      15# 20
+EXIT . . . . . . .  C ADDR   0018H   R   SEG=STRING_ROUTINES   44 52#
+IO_STRING. . . . .  N NUMB   -----          3
+LF . . . . . . . .  N NUMB   000AH   A      16# 26
+PS1. . . . . . . .  C ADDR   0010H   R   SEG=STRING_ROUTINES   39 43#
+PS2. . . . . . . .  C ADDR   0011H   R   SEG=STRING_ROUTINES   42 44#
+PUTCHAR. . . . . .  C ADDR   -----       EXT   6# 22 28 46
+PUTSTRING. . . . .  C ADDR   0009H   R   SEG=STRING_ROUTINES   8 38# 51
+PUT_CRLF . . . . .  C ADDR   0000H   R   SEG=STRING_ROUTINES   8 19#
+STRING_ROUTINES. .  C SEG    0019H       REL=INBLOCK   10# 13
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
